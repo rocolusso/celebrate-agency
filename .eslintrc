@@ -1,0 +1,40 @@
+{
+  "extends": ["airbnb", "airbnb/hooks"],
+
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+
+      }
+    }
+  },
+  "rules": {
+      "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
+      "react/require-default-props": "off",
+      "import/extensions": "off",
+      "react/jsx-props-no-spreading": "off",
+      "no-undef": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "react/react-in-jsx-scope": "off",
+      "quotes": "off",
+      "camelcase": "off",
+      "comma-dangle": "off",
+      "no-trailing-spaces": "off",
+      "max-len": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-tag-spacing": "off",
+      "react/no-array-index-key": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "react/button-has-type": "off",
+      "import/order": "off",
+      "import/prefer-default-export": "off",
+      "implicit-arrow-linebreak": "off",
+      "function-paren-newline": "off",
+      "no-console": "off"
+  },
+  "ignorePatterns": ["src/components/ui/"]
+}

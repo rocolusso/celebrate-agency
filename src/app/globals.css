@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFF9F5;
+  --foreground: #1A1A2E;
+}
+
+@theme inline {
+  /* Soft Pastels - Backgrounds */
+  --color-soft-pink: #FFD6E8;
+  --color-lavender: #E5DEFF;
+  --color-mint: #D4F1E8;
+  --color-peach: #FFE5D4;
+  --color-cream: #FFF9F5;
+  
+  /* Vibrant Accents - CTAs & Highlights */
+  --color-hot-pink: #FF1493;
+  --color-electric-blue: #00B4D8;
+  --color-sunny-yellow: #FFD60A;
+  --color-purple: #9D4EDD;
+  --color-orange: #FF6B35;
+  
+  /* Neutrals */
+  --color-navy: #1A1A2E;
+  --color-gray: #6B7280;
+  --color-light-gray: #F3F4F6;
+  --color-white: #FFFFFF;
+  
+  /* Semantic Colors */
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Background & Foreground */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom utilities */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Lightbox Custom Styles */
+.yarl__thumbnails_thumbnail {
+  border: 3px solid transparent !important;
+  transition: border-color 0.3s ease;
+}
+
+.yarl__thumbnails_thumbnail_active {
+  border-color: #FF1493 !important;
+}
+
+.yarl__button:hover {
+  background-color: #FF1493 !important;
+  border-color: #FF1493 !important;
+}
+
+.yarl__navigation_prev:hover,
+.yarl__navigation_next:hover {
+  background-color: #FF1493 !important;
+  border-color: #FF1493 !important;
+}
+
+.yarl__zoom_button {
+  color: #FF1493 !important;
+}
+
+.yarl__zoom_button:hover {
+  background-color: rgba(255, 20, 147, 0.1) !important;
+}
+
+/* Counter styling - top center */
+.yarl__counter {
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  color: white !important;
+}
+
+/* Mobile optimizations for lightbox */
+@media (max-width: 640px) {
+  .yarl__thumbnails_thumbnail {
+    width: 80px !important;
+    height: 60px !important;
+  }
+}

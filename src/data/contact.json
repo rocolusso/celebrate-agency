@@ -1,0 +1,24 @@
+{
+  "phones": [
+    {
+      "name": "Александра",
+      "number": "079181825",
+      "formatted": "+373 79 18 18 25"
+    },
+    {
+      "name": "Екатерина",
+      "number": "078684285",
+      "formatted": "+373 78 68 42 85"
+    }
+  ],
+  "address": {
+    "city": "Бельцы",
+    "area": "Centru",
+    "street": "15",
+    "full": "Balti, Centru, 15"
+  },
+  "social": {
+    "instagram": "https://instagram.com"
+  },
+  "workingHours": "Ежедневно с 9:00 до 21:00"
+}
