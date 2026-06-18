@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "services": "Servicii",
+    "about": "Despre noi",
+    "media": "Media",
+    "contact": "Contacte",
+    "cta": "Comandă o petrecere"
+  },
+  "footer": {
+    "tagline": "Sărbători strălucitoare pentru copiii voștri",
+    "navTitle": "Navigare",
+    "contactTitle": "Contacte",
+    "rights": "Toate drepturile rezervate"
+  },
+  "langSwitcher": {
+    "ariaLabel": "Schimbă limba"
+  },
+  "cards": {
+    "more": "Mai mult",
+    "view": "Vezi"
+  }
+}

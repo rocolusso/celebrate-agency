@@ -1,0 +1,34 @@
+{
+  "page": {
+    "meta": {
+      "title": "Toate serviciile - Animatori pentru petreceri",
+      "description": "Alegeți personajul pentru petrecerea copilului dvs.: Unicornul, Patrula Cățeilor, Fixiții și altele. 12 variante la alegere."
+    },
+    "h1": "Serviciile noastre",
+    "subtitle": "Alegeți personajul preferat al copilului dvs."
+  },
+  "detail": {
+    "breadcrumbs": {
+      "home": "Acasă",
+      "services": "Servicii"
+    },
+    "labels": {
+      "price": "Preț",
+      "age": "Vârstă",
+      "duration": "Durată"
+    },
+    "orderBtn": "Comandă petrecerea",
+    "aboutTitle": "Despre program",
+    "includesTitle": "Programul include:",
+    "includes": [
+      "✨ 2 animatori profesioniști",
+      "🎲 Jocuri interactive și concursuri",
+      "💃 Dansuri și flashmob-uri",
+      "🎈 Figurine din baloane",
+      "🎂 Servirea solemnă a tortului",
+      "📸 Emoții strălucitoare și impresii de neuitat"
+    ],
+    "galleryTitle": "Fotografii",
+    "relatedTitle": "Alte personaje"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Contacte - Contactați-ne",
+    "description": "Comandați o petrecere pentru copii în Bălți. Telefoane: 079181825, 078684285. Adresă: Bălți, Centru, 15."
+  },
+  "page": {
+    "h1": "Contactați-ne",
+    "subtitle": "Vom răspunde cu plăcere la toate întrebările dvs.",
+    "formTitle": "Lăsați o cerere",
+    "infoTitle": "Informații de contact",
+    "phones": "Telefoane",
+    "address": "Adresă",
+    "hours": "Program de lucru",
+    "social": "Rețele sociale",
+    "workingHours": "Zilnic de la 9:00 până la 21:00"
+  },
+  "form": {
+    "sectionTitle": "Contactați-ne",
+    "sectionSubtitle": "Lăsați o cerere și vă vom contacta în cel mai scurt timp",
+    "directLabel": "Sau contactați-ne direct:",
+    "nameLabel": "Nume",
+    "namePlaceholder": "Numele dvs.",
+    "phoneLabel": "Telefon",
+    "messageLabel": "Mesaj (opțional)",
+    "messagePlaceholder": "Povestiți despre petrecerea dvs....",
+    "submitBtn": "Trimite cererea",
+    "submittingBtn": "Se trimite...",
+    "successMsg": "✓ Mulțumim! Cererea dvs. a fost trimisă. Vă vom contacta în curând.",
+    "errorMsg": "A apărut o eroare la trimiterea formularului. Vă rugăm să încercați mai târziu sau să ne sunați.",
+    "validation": {
+      "nameMin": "Numele trebuie să conțină minim 2 caractere",
+      "nameMax": "Numele este prea lung",
+      "phoneFormat": "Format de telefon incorect",
+      "phoneMin": "Telefonul este prea scurt",
+      "phoneLong": "Telefonul este prea lung",
+      "messageMax": "Mesajul este prea lung"
+    }
+  }
+}

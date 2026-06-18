@@ -1,0 +1,23 @@
+{
+  "page": {
+    "meta": {
+      "title": "Petrecerile noastre - Foto și video",
+      "description": "Vizionați fotografii și video de la petrecerile noastre. Copii fericiți, emoții strălucitoare, munca profesionistă a animatorilor."
+    },
+    "h1": "Petrecerile noastre",
+    "subtitle": "Fotografii și video de la evenimente"
+  },
+  "detail": {
+    "breadcrumbs": {
+      "home": "Acasă",
+      "media": "Media"
+    },
+    "photosTitle": "Fotografii",
+    "videoTitle": "Video de la petrecere",
+    "ctaPreTitle": "V-a plăcut? Comandați propria petrecere!",
+    "ctaTitle": "Contactați-ne",
+    "ctaSubtitle": "Lăsați o cerere și vă vom contacta în cel mai scurt timp",
+    "servicesTitle": "Alegeți personajul pentru petrecerea dvs.",
+    "backLink": "← Înapoi la lista de evenimente"
+  }
+}

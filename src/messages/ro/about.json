@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Despre noi - Studioul Domovenok",
+    "description": "Organizare profesională a petrecerilor pentru copii în Bălți. Animatori experimentați, programe strălucitoare, copii fericiți."
+  },
+  "page": {
+    "h1": "Despre studioul «Domovenok»",
+    "subtitle": "Creăm sărbători de neuitat pentru copiii dvs. din 2015"
+  },
+  "main": {
+    "title": "Organizarea petrecerilor pentru copii de la studioul «Domovenok»",
+    "text": "Oferiți copilului dvs. o sărbătoare adevărată, plină de râs, distracție și magie! Creăm programe strălucitoare, dinamice și memorabile cu durata de 1–1,5 ore — totul este gândit până la cel mai mic detaliu, pentru ca aniversarul și oaspeții să fie încântați!"
+  },
+  "program": {
+    "title": "💫 Programul de bază — {price} lei",
+    "subtitle": "În costul programului (în limitele orașului {city}) intră tot ce este necesar pentru o sărbătoare perfectă:",
+    "city": "Bălți",
+    "items": [
+      "✨ 2 animatori — personajele preferate la alegere, în funcție de vârsta și interesele copilului",
+      "🎲 Jocuri interactive și flashmob-uri — mișcare, râs și multă bucurie!",
+      "🎈 Surpriză — figurine din baloane, pe care copiii le adoră",
+      "🎂 Servirea solemnă a tortului — un final strălucit al sărbătorii sub aplauzele oaspeților"
+    ]
+  },
+  "why": {
+    "title": "De ce ne aleg pe noi?",
+    "items": [
+      {
+        "icon": "🎭",
+        "title": "Animatori profesioniști",
+        "desc": "Artiști experimentați cu pregătire în domeniul artei"
+      },
+      {
+        "icon": "🎨",
+        "title": "Costume strălucitoare",
+        "desc": "Costume de calitate ale personajelor preferate"
+      },
+      {
+        "icon": "🎉",
+        "title": "Abordare individuală",
+        "desc": "Programul se adaptează în funcție de vârsta copiilor"
+      },
+      {
+        "icon": "⭐",
+        "title": "Clienți mulțumiți",
+        "desc": "Sute de petreceri realizate cu succes"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Sunteți gata să comandați o petrecere?",
+    "subtitle": "Contactați-ne și vom crea un eveniment de neuitat pentru copilul dvs.!",
+    "btn": "Contactați-ne"
+  }
+}

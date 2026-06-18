@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Sărbători strălucitoare pentru copiii voștri",
+    "subtitle": "Animatori profesioniști în Bălți",
+    "ctaText": "Comandă o petrecere"
+  },
+  "about": {
+    "title": "Organizarea petrecerilor pentru copii de la studioul «Domovenok»",
+    "intro": "Oferiți copilului dvs. o sărbătoare adevărată, plină de râs, distracție și magie! Creăm programe strălucitoare, dinamice și memorabile cu durata de 1–1,5 ore — totul este gândit până la cel mai mic detaliu, pentru ca aniversarul și oaspeții să fie încântați!",
+    "programTitle": "💫 În costul programului — {price} lei (în limitele orașului {city}) — intră tot ce este necesar:",
+    "city": "Bălți",
+    "programItems": [
+      "✨ 2 animatori — personajele preferate la alegere, în funcție de vârsta și interesele copilului",
+      "🎲 Jocuri interactive și flashmob-uri — mișcare, râs și multă bucurie!",
+      "🎈 Surpriză — figurine din baloane, pe care copiii le adoră",
+      "🎂 Servirea solemnă a tortului — un final strălucit al sărbătorii sub aplauzele oaspeților"
+    ],
+    "closing": "Cu «Domovenok», fiecare sărbătoare se transformă într-o poveste magică, unde visele copiilor devin realitate!"
+  },
+  "features": {
+    "title": "Completați sărbătoarea cu opțiuni strălucitoare",
+    "subtitle": "Doriți să faceți sărbătoarea și mai interesantă și mai bogată? Am pregătit completări speciale care vor oferi copiilor emoții noi!"
+  },
+  "services": {
+    "title": "Personajele noastre"
+  },
+  "contact": {
+    "title": "Contactați-ne",
+    "subtitle": "Lăsați o cerere și vă vom contacta în cel mai scurt timp",
+    "directLabel": "Sau contactați-ne direct:"
+  }
+}
