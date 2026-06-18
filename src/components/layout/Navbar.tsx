@@ -5,22 +5,32 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Container from '@/components/ui/Container';
 import MobileMenu from './MobileMenu';
-import { NAV_LINKS, SITE_NAME } from '@/lib/constants';
+import LanguageSwitcher from './LanguageSwitcher';
+import { NAV_HREFS, SITE_NAME } from '@/lib/constants';
 import contactData from '@/data/contact.json';
+import type { Locale, Dict } from '@/lib/i18n';
+import { getLocaleHref } from '@/lib/i18n-utils';
 
-export default function Navbar() {
+interface NavbarProps {
+  locale: Locale;
+  dict: Dict;
+}
+
+export default function Navbar({ locale, dict }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navLinks = NAV_HREFS.map((item) => ({
+    href: getLocaleHref(locale, item.href),
+    label: dict.nav[item.key] as string,
+  }));
 
   return (
     <>
@@ -31,14 +41,12 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="text-2xl font-bold text-[var(--color-navy)]">
+            <Link href={getLocaleHref(locale, '/')} className="text-2xl font-bold text-[var(--color-navy)]">
               {SITE_NAME}
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
+            <div className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -57,39 +65,29 @@ export default function Navbar() {
               >
                 {contactData.phones[0].formatted}
               </a>
+              <LanguageSwitcher locale={locale} ariaLabel={dict.langSwitcher.ariaLabel} />
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="md:hidden p-2 text-[var(--color-navy)]"
               aria-label="Open menu"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </Container>
       </nav>
 
-      {/* Spacer to prevent content from going under fixed navbar */}
       <div className="h-20" />
 
-      {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
+        locale={locale}
+        dict={dict}
       />
     </>
   );

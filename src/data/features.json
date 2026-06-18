@@ -1,71 +1,101 @@
 [
   {
     "id": "1",
-    "nameRu": "Шоу мыльных пузырей",
-    "description": "Волшебство, которое оживает прямо перед глазами!",
+    "name": { "ru": "Шоу мыльных пузырей", "ro": "Spectacol cu bule de săpun" },
+    "description": {
+      "ru": "Волшебство, которое оживает прямо перед глазами!",
+      "ro": "Magie care prinde viață chiar în fața ochilor!"
+    },
     "price": 500,
     "icon": "🫧"
   },
   {
     "id": "2",
-    "nameRu": "Химическое шоу-лаборатория",
-    "description": "Увлекательные опыты с сухим льдом, дымом и неожиданными превращениями!",
+    "name": { "ru": "Химическое шоу-лаборатория", "ro": "Laborator de chimie show" },
+    "description": {
+      "ru": "Увлекательные опыты с сухим льдом, дымом и неожиданными превращениями!",
+      "ro": "Experimente fascinante cu gheață carbonică, fum și transformări neașteptate!"
+    },
     "price": "1500 / 2000",
     "icon": "🧪"
   },
   {
     "id": "3",
-    "nameRu": "Золотое или красное шоу",
-    "description": "Эффектная дискотека с ленточным конфетти, где каждый почувствует себя звездой!",
+    "name": { "ru": "Золотое или красное шоу", "ro": "Show auriu sau roșu" },
+    "description": {
+      "ru": "Эффектная дискотека с ленточным конфетти, где каждый почувствует себя звездой!",
+      "ro": "Discotecă spectaculoasă cu confetti, unde fiecare se simte o vedetă!"
+    },
     "price": 900,
     "icon": "🎊"
   },
   {
     "id": "4",
-    "nameRu": "Фэйс-арт для каждого ребёнка",
-    "description": "Яркие рисунки на лице, которые превращают малышей в сказочных героев!",
+    "name": { "ru": "Фэйс-арт для каждого ребёнка", "ro": "Face-art pentru fiecare copil" },
+    "description": {
+      "ru": "Яркие рисунки на лице, которые превращают малышей в сказочных героев!",
+      "ro": "Desene strălucitoare pe față, care transformă copiii în personaje de poveste!"
+    },
     "price": 500,
     "icon": "🎨"
   },
   {
     "id": "5",
-    "nameRu": "Мастер-класс «Разрисуй свой шопер»",
-    "description": "Творческое занятие, где дети создают собственную дизайнерскую сумку!",
+    "name": { "ru": "Мастер-класс «Разрисуй свой шопер»", "ro": "Master-class «Pictează-ți propria sacoșă»" },
+    "description": {
+      "ru": "Творческое занятие, где дети создают собственную дизайнерскую сумку!",
+      "ro": "O activitate creativă unde copiii creează propria sacoșă de design!"
+    },
     "price": 600,
     "icon": "👜"
   },
   {
     "id": "6",
-    "nameRu": "Гигантские герои",
-    "description": "Медведь Потапыч, Панда, Черепашка-ниндзя, Чебурашка, Заяц и Волк из «Ну, погоди!»",
+    "name": { "ru": "Гигантские герои", "ro": "Eroi giganți" },
+    "description": {
+      "ru": "Медведь Потапыч, Панда, Черепашка-ниндзя, Чебурашка, Заяц и Волк из «Ну, погоди!»",
+      "ro": "Ursul Potapici, Panda, Broasca Țestoasă Ninja, Ceburaška, Iepurașul și Lupul"
+    },
     "price": 1200,
     "icon": "🐻"
   },
   {
     "id": "7",
-    "nameRu": "Надувной Пузырь (Bubble House)",
-    "description": "Необычная фотозона и игровое пространство, которое дети просто обожают!",
+    "name": { "ru": "Надувной Пузырь (Bubble House)", "ro": "Balon gonflabil (Bubble House)" },
+    "description": {
+      "ru": "Необычная фотозона и игровое пространство, которое дети просто обожают!",
+      "ro": "O zonă foto neobișnuită și spațiu de joacă pe care copiii îl adoră!"
+    },
     "price": 2500,
     "icon": "🫧"
   },
   {
     "id": "8",
-    "nameRu": "Аппарат для сладкой ваты и попкорна",
-    "description": "Любимые лакомства всех детей прямо на вашем празднике!",
+    "name": { "ru": "Аппарат для сладкой ваты и попкорна", "ro": "Aparat de vată dulce și popcorn" },
+    "description": {
+      "ru": "Любимые лакомства всех детей прямо на вашем празднике!",
+      "ro": "Dulciurile preferate ale tuturor copiilor chiar la sărbătoarea ta!"
+    },
     "price": 600,
     "icon": "🍿"
   },
   {
     "id": "9",
-    "nameRu": "Пиньята с мечом",
-    "description": "Захватывающее развлечение, где участники добывают конфеты, смех и радость!",
+    "name": { "ru": "Пиньята с мечом", "ro": "Piñata cu sabie" },
+    "description": {
+      "ru": "Захватывающее развлечение, где участники добывают конфеты, смех и радость!",
+      "ro": "O distracție captivantă unde participanții câștigă bomboane, râs și bucurie!"
+    },
     "price": 700,
     "icon": "🎁"
   },
   {
     "id": "10",
-    "nameRu": "Оформление шарами",
-    "description": "От нежных композиций до масштабных арок и инсталляций. Это добавит вашему событию яркости и настоящего волшебства!",
+    "name": { "ru": "Оформление шарами", "ro": "Decorațiuni cu baloane" },
+    "description": {
+      "ru": "От нежных композиций до масштабных арок и инсталляций. Это добавит вашему событию яркости и настоящего волшебства!",
+      "ro": "De la compoziții delicate la arce și instalații la scară mare. Aceasta va adăuga evenimentului tău strălucire și adevărată magie!"
+    },
     "price": "По запросу",
     "icon": "🎈"
   }

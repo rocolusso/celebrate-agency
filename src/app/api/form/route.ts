@@ -1,14 +1,22 @@
 import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
-import { contactFormSchema } from '@/lib/validations';
+import { getContactFormSchema } from '@/lib/validations';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { message } = body;
 
-    // Validate request body
-    const validationResult = contactFormSchema.safeParse(message);
+    // Validate request body using a neutral schema (validation messages don't matter server-side)
+    const neutralValidation = {
+      nameMin: 'Name too short',
+      nameMax: 'Name too long',
+      phoneFormat: 'Invalid phone',
+      phoneMin: 'Phone too short',
+      phoneLong: 'Phone too long',
+      messageMax: 'Message too long',
+    };
+    const validationResult = getContactFormSchema(neutralValidation).safeParse(message);
     
     if (!validationResult.success) {
       return NextResponse.json(

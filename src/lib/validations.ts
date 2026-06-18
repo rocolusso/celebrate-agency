@@ -1,25 +1,26 @@
 import { z } from 'zod';
+import type { Dict } from './i18n';
 
-export const contactFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Имя должно содержать минимум 2 символа')
-    .max(100, 'Имя слишком длинное')
-    .trim(),
-  phone: z
-    .string()
-    .regex(
-      /^[\d\s+\-()]+$/,
-      'Некорректный формат телефона'
-    )
-    .min(9, 'Телефон слишком короткий')
-    .max(20, 'Телефон слишком длинный')
-    .trim(),
-  message: z
-    .string()
-    .max(500, 'Сообщение слишком длинное')
-    .optional()
-    .or(z.literal('')),
-});
+export function getContactFormSchema(validationDict: Dict) {
+  const v = validationDict;
+  return z.object({
+    name: z
+      .string()
+      .min(2, v.nameMin)
+      .max(100, v.nameMax)
+      .trim(),
+    phone: z
+      .string()
+      .regex(/^[\d\s+\-()]+$/, v.phoneFormat)
+      .min(9, v.phoneMin)
+      .max(20, v.phoneLong)
+      .trim(),
+    message: z
+      .string()
+      .max(500, v.messageMax)
+      .optional()
+      .or(z.literal('')),
+  });
+}
 
-export type ContactFormData = z.infer<typeof contactFormSchema>;
+export type ContactFormData = z.infer<ReturnType<typeof getContactFormSchema>>;

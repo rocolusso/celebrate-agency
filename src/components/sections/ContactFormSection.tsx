@@ -2,17 +2,24 @@ import React from 'react';
 import Container from '@/components/ui/Container';
 import ContactForm from '@/components/forms/ContactForm';
 import contactData from '@/data/contact.json';
+import type { Locale, Dict } from '@/lib/i18n';
 
 interface ContactFormSectionProps {
+  locale: Locale;
   preTitle?: string;
-  title?: string;
-  subtitle?: string;
+  title: string;
+  subtitle: string;
+  directLabel: string;
+  formDict: Dict;
 }
 
 export default function ContactFormSection({
+  locale,
   preTitle,
-  title = 'Свяжитесь с нами',
-  subtitle = 'Оставьте заявку, и мы свяжемся с вами в ближайшее время',
+  title,
+  subtitle,
+  directLabel,
+  formDict,
 }: ContactFormSectionProps) {
   return (
     <section id="contact" className="section-padding bg-[var(--color-lavender)]">
@@ -30,16 +37,12 @@ export default function ContactFormSection({
             {subtitle}
           </p>
 
-          {/* Contact Form */}
           <div className="bg-white rounded-xl shadow-xl p-6 md:p-8 mb-8">
-            <ContactForm />
+            <ContactForm locale={locale} formDict={formDict} />
           </div>
 
-          {/* Alternative Contact Methods */}
           <div className="text-center">
-            <p className="text-[var(--color-navy)] font-medium mb-4">
-              Или свяжитесь с нами напрямую:
-            </p>
+            <p className="text-[var(--color-navy)] font-medium mb-4">{directLabel}</p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
               {contactData.phones.map((phone) => (
                 <a

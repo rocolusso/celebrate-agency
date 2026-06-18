@@ -3,17 +3,22 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { contactFormSchema, type ContactFormData } from '@/lib/validations';
+import { getContactFormSchema, type ContactFormData } from '@/lib/validations';
 import Button from '@/components/ui/Button';
+import type { Locale, Dict } from '@/lib/i18n';
 
 interface ContactFormProps {
+  locale?: Locale;
+  formDict: Dict;
   className?: string;
 }
 
-export default function ContactForm({ className }: ContactFormProps) {
+export default function ContactForm({ formDict, className }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const schema = getContactFormSchema(formDict.validation);
 
   const {
     register,
@@ -21,7 +26,7 @@ export default function ContactForm({ className }: ContactFormProps) {
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(schema),
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -32,26 +37,18 @@ export default function ContactForm({ className }: ContactFormProps) {
     try {
       const response = await fetch('/api/form', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: data }),
       });
 
-      if (!response.ok) {
-        throw new Error('Ошибка отправки формы');
-      }
+      if (!response.ok) throw new Error('Form submission failed');
 
       setSubmitStatus('success');
       reset();
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
-    } catch (error) {
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch {
       setSubmitStatus('error');
-      setErrorMessage('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже или позвоните нам.');
+      setErrorMessage(formDict.errorMsg as string);
     } finally {
       setIsSubmitting(false);
     }
@@ -59,27 +56,25 @@ export default function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={className}>
-      {/* Name Field */}
       <div className="mb-4">
         <label htmlFor="name" className="block text-[var(--color-navy)] font-medium mb-2">
-          Имя <span className="text-[var(--color-error)]">*</span>
+          {formDict.nameLabel} <span className="text-[var(--color-error)]">*</span>
         </label>
         <input
           id="name"
           type="text"
           {...register('name')}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-electric-blue)] focus:border-transparent transition-all"
-          placeholder="Ваше имя"
+          placeholder={formDict.namePlaceholder as string}
         />
         {errors.name && (
           <p className="mt-1 text-sm text-[var(--color-error)]">{errors.name.message}</p>
         )}
       </div>
 
-      {/* Phone Field */}
       <div className="mb-4">
         <label htmlFor="phone" className="block text-[var(--color-navy)] font-medium mb-2">
-          Телефон <span className="text-[var(--color-error)]">*</span>
+          {formDict.phoneLabel} <span className="text-[var(--color-error)]">*</span>
         </label>
         <input
           id="phone"
@@ -93,47 +88,37 @@ export default function ContactForm({ className }: ContactFormProps) {
         )}
       </div>
 
-      {/* Message Field */}
       <div className="mb-6">
         <label htmlFor="message" className="block text-[var(--color-navy)] font-medium mb-2">
-          Сообщение (необязательно)
+          {formDict.messageLabel}
         </label>
         <textarea
           id="message"
           {...register('message')}
           rows={4}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-electric-blue)] focus:border-transparent transition-all resize-none"
-          placeholder="Расскажите о вашем празднике..."
+          placeholder={formDict.messagePlaceholder as string}
         />
         {errors.message && (
           <p className="mt-1 text-sm text-[var(--color-error)]">{errors.message.message}</p>
         )}
       </div>
 
-      {/* Submit Button */}
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full"
-      >
-        {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+      <Button type="submit" disabled={isSubmitting} className="w-full">
+        {isSubmitting ? formDict.submittingBtn : formDict.submitBtn}
       </Button>
 
-      {/* Success Message */}
       {submitStatus === 'success' && (
         <div className="mt-4 p-4 bg-[var(--color-success)] bg-opacity-10 border border-[var(--color-success)] rounded-lg">
           <p className="text-[var(--color-success)] text-center font-medium">
-            ✓ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+            {formDict.successMsg}
           </p>
         </div>
       )}
 
-      {/* Error Message */}
       {submitStatus === 'error' && (
         <div className="mt-4 p-4 bg-[var(--color-error)] bg-opacity-10 border border-[var(--color-error)] rounded-lg">
-          <p className="text-[var(--color-error)] text-center">
-            {errorMessage}
-          </p>
+          <p className="text-[var(--color-error)] text-center">{errorMessage}</p>
         </div>
       )}
     </form>

@@ -46,7 +46,7 @@ export default function Button({
   
   if (href) {
     return (
-      <Link href={href} className={combinedClassName}>
+      <Link href={href} className={combinedClassName} onClick={onClick}>
         {children}
       </Link>
     );

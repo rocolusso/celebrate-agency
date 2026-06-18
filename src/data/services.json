@@ -1,9 +1,15 @@
 [
   {
     "id": "1",
-    "nameRu": "Единорожка",
+    "name": {
+      "ru": "Единорожка",
+      "ro": "Unicornul"
+    },
     "slug": "edinorozhka",
-    "description": "Волшебная единорожка подарит вашему ребенку незабываемый праздник, полный магии и веселья. Интерактивные игры, танцы и море позитива!",
+    "description": {
+      "ru": "Волшебная единорожка подарит вашему ребенку незабываемый праздник, полный магии и веселья. Интерактивные игры, танцы и море позитива!",
+      "ro": "Unicornul magic va oferi copilului tău o sărbătoare de neuitat, plină de magie și distracție. Jocuri interactive, dansuri și multă veselie!"
+    },
     "image": "/images/services/edinorozhka.jpg",
     "gallery": [
       "/images/services/edinorozhka-gallery-1.jpg",
@@ -15,14 +21,26 @@
     ],
     "color": "#FF1493",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "2",
-    "nameRu": "Куроми и Мелоди",
+    "name": {
+      "ru": "Куроми и Мелоди",
+      "ro": "Kuromi și Melody"
+    },
     "slug": "kuromi-i-melodi",
-    "description": "Любимые персонажи Куроми и Мелоди развеселят детей играми, конкурсами и танцами. Яркие эмоции гарантированы!",
+    "description": {
+      "ru": "Любимые персонажи Куроми и Мелоди развеселят детей играми, конкурсами и танцами. Яркие эмоции гарантированы!",
+      "ro": "Personajele îndrăgite Kuromi și Melody vor anima copiii cu jocuri, concursuri și dansuri. Emoții strălucitoare garantate!"
+    },
     "image": "/images/services/kuromi-i-melodi.jpg",
     "gallery": [
       "/images/services/kuromi-i-melodi-gallery-1.jpg",
@@ -34,14 +52,26 @@
     ],
     "color": "#9D4EDD",
     "price": 2500,
-    "ageRange": "4-12 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "4-12 лет",
+      "ro": "4-12 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "3",
-    "nameRu": "Лабубу",
+    "name": {
+      "ru": "Лабубу",
+      "ro": "Labubu"
+    },
     "slug": "labubu",
-    "description": "Очаровательный Лабубу создаст атмосферу веселья и радости на вашем празднике. Игры, конкурсы и незабываемые эмоции!",
+    "description": {
+      "ru": "Очаровательный Лабубу создаст атмосферу веселья и радости на вашем празднике. Игры, конкурсы и незабываемые эмоции!",
+      "ro": "Adorabilul Labubu va crea o atmosferă de distracție și bucurie la sărbătoarea ta. Jocuri, concursuri și emoții de neuitat!"
+    },
     "image": "/images/services/labubu.jpg",
     "gallery": [
       "/images/services/labubu-gallery-1.jpg",
@@ -53,14 +83,26 @@
     ],
     "color": "#00B4D8",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "4",
-    "nameRu": "Лабубу и единорожка",
+    "name": {
+      "ru": "Лабубу и единорожка",
+      "ro": "Labubu și Unicornul"
+    },
     "slug": "labubu-i-edinorozhka",
-    "description": "Двойное веселье с Лабубу и Единорожкой! Два любимых персонажа сделают праздник вдвойне ярче и интереснее.",
+    "description": {
+      "ru": "Двойное веселье с Лабубу и Единорожкой! Два любимых персонажа сделают праздник вдвойне ярче и интереснее.",
+      "ro": "Distracție dublă cu Labubu și Unicornul! Două personaje îndrăgite vor face sărbătoarea de două ori mai strălucitoare și mai interesantă."
+    },
     "image": "/images/services/labubu-i-edinorozhka.jpg",
     "gallery": [
       "/images/services/labubu-i-edinorozhka-gallery-1.jpg",
@@ -72,14 +114,26 @@
     ],
     "color": "#06D6A0",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "5",
-    "nameRu": "Микки и Минни Маус",
+    "name": {
+      "ru": "Микки и Минни Маус",
+      "ro": "Mickey și Minnie Mouse"
+    },
     "slug": "mikki-i-minni-maus",
-    "description": "Легендарные персонажи Disney! Микки и Минни Маус подарят детям волшебство и радость, как в настоящем Диснейленде.",
+    "description": {
+      "ru": "Легендарные персонажи Disney! Микки и Минни Маус подарят детям волшебство и радость, как в настоящем Диснейленде.",
+      "ro": "Personajele legendare Disney! Mickey și Minnie Mouse vor oferi copiilor magie și bucurie, ca în adevăratul Disneyland."
+    },
     "image": "/images/services/mikki-i-minni-maus.jpg",
     "gallery": [
       "/images/services/mikki-i-minni-maus-gallery-1.jpg",
@@ -91,14 +145,26 @@
     ],
     "color": "#EF476F",
     "price": 2500,
-    "ageRange": "3-12 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-12 лет",
+      "ro": "3-12 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "6",
-    "nameRu": "Супер герои",
+    "name": {
+      "ru": "Супер герои",
+      "ro": "Super eroi"
+    },
     "slug": "super-geroi",
-    "description": "Любимые супергерои спасут праздник! Человек-паук, Бэтмен и другие герои проведут захватывающие игры и конкурсы.",
+    "description": {
+      "ru": "Любимые супергерои спасут праздник! Человек-паук, Бэтмен и другие герои проведут захватывающие игры и конкурсы.",
+      "ro": "Supereroul preferat va salva petrecerea! Spider-Man, Batman și alți eroi vor conduce jocuri și concursuri captivante."
+    },
     "image": "/images/services/super-geroi.jpg",
     "gallery": [
       "/images/services/super-geroi-gallery-1.jpg",
@@ -110,14 +176,26 @@
     ],
     "color": "#FF6B35",
     "price": 2500,
-    "ageRange": "4-12 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "4-12 лет",
+      "ro": "4-12 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "7",
-    "nameRu": "Тик Ток",
+    "name": {
+      "ru": "Тик Ток",
+      "ro": "TikTok"
+    },
     "slug": "tik-tok",
-    "description": "Самые популярные танцы и челленджи из TikTok! Современная программа для детей, которые любят быть в тренде.",
+    "description": {
+      "ru": "Самые популярные танцы и челленджи из TikTok! Современная программа для детей, которые любят быть в тренде.",
+      "ro": "Cele mai populare dansuri și challenge-uri din TikTok! Un program modern pentru copiii care iubesc să fie în trend."
+    },
     "image": "/images/services/tik-tok.jpg",
     "gallery": [
       "/images/services/tik-tok-gallery-1.jpg",
@@ -129,14 +207,26 @@
     ],
     "color": "#00F5FF",
     "price": 2500,
-    "ageRange": "6-14 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "6-14 лет",
+      "ro": "6-14 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "8",
-    "nameRu": "Умник и Конфетка",
+    "name": {
+      "ru": "Умник и Конфетка",
+      "ro": "Deșteptul și Bombonica"
+    },
     "slug": "umnik-i-konfetka",
-    "description": "Веселые и умные персонажи проведут интеллектуальные игры и конкурсы. Развлечение и развитие в одной программе!",
+    "description": {
+      "ru": "Веселые и умные персонажи проведут интеллектуальные игры и конкурсы. Развлечение и развитие в одной программе!",
+      "ro": "Personajele vesele și deștepte vor conduce jocuri și concursuri intelectuale. Distracție și dezvoltare într-un singur program!"
+    },
     "image": "/images/services/umnik-i-konfetka.jpg",
     "gallery": [
       "/images/services/umnik-i-konfetka-gallery-1.jpg",
@@ -148,14 +238,26 @@
     ],
     "color": "#FFD60A",
     "price": 2500,
-    "ageRange": "5-12 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "5-12 лет",
+      "ro": "5-12 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "9",
-    "nameRu": "Фиксики",
+    "name": {
+      "ru": "Фиксики",
+      "ro": "Fixiții"
+    },
     "slug": "fiksiki",
-    "description": "Любимые герои мультсериала Фиксики! Нолик, Симка и их друзья научат детей новому и устроят веселые приключения.",
+    "description": {
+      "ru": "Любимые герои мультсериала Фиксики! Нолик, Симка и их друзья научат детей новому и устроят веселые приключения.",
+      "ro": "Personajele îndrăgite din desenul animat Fixiții! Nolik, Simka și prietenii lor vor învăța copiii lucruri noi și vor organiza aventuri vesele."
+    },
     "image": "/images/services/fiksiki.jpg",
     "gallery": [
       "/images/services/fiksiki-gallery-1.jpg",
@@ -167,14 +269,26 @@
     ],
     "color": "#90E0A0",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "10",
-    "nameRu": "Фьеки",
+    "name": {
+      "ru": "Фьеки",
+      "ro": "Fieky"
+    },
     "slug": "fyeki",
-    "description": "Яркие и веселые персонажи Фьеки создадут незабываемую атмосферу праздника с играми, танцами и сюрпризами!",
+    "description": {
+      "ru": "Яркие и веселые персонажи Фьеки создадут незабываемую атмосферу праздника с играми, танцами и сюрпризами!",
+      "ro": "Personajele strălucitoare și vesele Fieky vor crea o atmosferă de neuitat la sărbătoare cu jocuri, dansuri și surprize!"
+    },
     "image": "/images/services/fyeki.jpg",
     "gallery": [
       "/images/services/fyeki-gallery-1.jpg",
@@ -186,14 +300,26 @@
     ],
     "color": "#FF9B85",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "11",
-    "nameRu": "Холодное сердце",
+    "name": {
+      "ru": "Холодное сердце",
+      "ro": "Frozen"
+    },
     "slug": "holodnoe-serdce",
-    "description": "Эльза и Анна из любимого мультфильма Disney! Волшебство, песни и приключения в стиле Холодного сердца.",
+    "description": {
+      "ru": "Эльза и Анна из любимого мультфильма Disney! Волшебство, песни и приключения в стиле Холодного сердца.",
+      "ro": "Elsa și Anna din animatul preferat Disney! Magie, cântece și aventuri în stilul Frozen."
+    },
     "image": "/images/services/holodnoe-serdce.jpg",
     "gallery": [
       "/images/services/holodnoe-serdce-gallery-1.jpg",
@@ -205,14 +331,26 @@
     ],
     "color": "#A8DADC",
     "price": 2500,
-    "ageRange": "3-12 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-12 лет",
+      "ro": "3-12 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   },
   {
     "id": "12",
-    "nameRu": "Щенячий патруль",
+    "name": {
+      "ru": "Щенячий патруль",
+      "ro": "Patrula Cățeilor"
+    },
     "slug": "shchenyachij-patrul",
-    "description": "Храбрые щенки из Щенячьего патруля готовы к спасательным миссиям! Райдер и его команда проведут захватывающие игры.",
+    "description": {
+      "ru": "Храбрые щенки из Щенячьего патруля готовы к спасательным миссиям! Райдер и его команда проведут захватывающие игры.",
+      "ro": "Căței curajoși din Patrula Cățeilor sunt gata pentru misiuni de salvare! Rider și echipa sa vor conduce jocuri captivante."
+    },
     "image": "/images/services/shchenyachij-patrul.jpg",
     "gallery": [
       "/images/services/shchenyachij-patrul-gallery-1.jpg",
@@ -224,7 +362,13 @@
     ],
     "color": "#457B9D",
     "price": 2500,
-    "ageRange": "3-10 лет",
-    "duration": "1-1.5 часа"
+    "ageRange": {
+      "ru": "3-10 лет",
+      "ro": "3-10 ani"
+    },
+    "duration": {
+      "ru": "1-1.5 часа",
+      "ro": "1-1.5 ore"
+    }
   }
 ]

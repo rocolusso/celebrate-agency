@@ -1,33 +1,38 @@
+export interface LocalizedString {
+  ru: string;
+  ro: string;
+}
+
 export interface Service {
   id: string;
-  nameRu: string;
+  name: LocalizedString;
   slug: string;
-  description: string;
+  description: LocalizedString;
   image: string;
   gallery?: string[];
   color: string;
   price: number;
-  ageRange: string;
-  duration: string;
+  ageRange: LocalizedString;
+  duration: LocalizedString;
 }
 
 export interface Feature {
   id: string;
-  nameRu: string;
-  description: string;
+  name: LocalizedString;
+  description: LocalizedString;
   price: number | string;
   icon?: string;
 }
 
 export interface Event {
   id: string;
-  title: string;
+  title: LocalizedString;
   slug: string;
   date: string;
   featuredImage: string;
   images: string[];
   youtubeUrl?: string;
-  description?: string;
+  description?: LocalizedString;
 }
 
 export interface ContactInfo {
