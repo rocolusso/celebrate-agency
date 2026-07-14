@@ -47,7 +47,7 @@ export default async function HomePage({ params }: HomePageProps) {
         title={homeDict.services.title}
         btnText={commonDict.cards.more}
       />
-      <Features dict={homeDict.features} />
+      <Features dict={homeDict.features} locale={locale} />
       <ContactFormSection
         locale={locale}
         title={homeDict.contact.title}
