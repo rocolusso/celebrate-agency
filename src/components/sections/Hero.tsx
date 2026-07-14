@@ -32,9 +32,9 @@ export default function Hero({
         {/* Gradient Overlay */}
         <div
           className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, rgba(229, 222, 255, 0.7) 0%, rgba(255, 214, 232, 0.7) 100%)',
-          }}
+          // style={{
+          //   background: 'linear-gradient(135deg, rgba(229, 222, 255, 0.3) 0%, rgba(255, 214, 232, 0.3) 100%)',
+          // }}
         />
       </div>
 
