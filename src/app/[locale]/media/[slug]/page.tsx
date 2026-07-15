@@ -69,7 +69,7 @@ export default async function EventPage({ params }: EventPageProps) {
           </nav>
 
           <div className="text-center max-w-3xl mx-auto">
-            {/*<p className="text-[var(--color-gray)] mb-2">{formatDate(event.date, locale)}</p>*/}
+            { /*<p className="text-[var(--color-gray)] mb-2">{formatDate(event.date, locale)}</p>*/ }
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-4">
               {event.title[locale]}
             </h1>
