@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       messageMax: 'Message too long',
     };
     const validationResult = getContactFormSchema(neutralValidation).safeParse(message);
-    
+
     if (!validationResult.success) {
       return NextResponse.json(
         { error: 'Validation failed', details: validationResult.error.issues },
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     // Format message for Telegram
     const formattedMessage = `
-🎉 Новая заявка с сайта Домовой
+🎉 Новая заявка с сайта Domovenok.md
 
 👤 Имя: ${name}
 📞 Телефон: ${phone}

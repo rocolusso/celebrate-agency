@@ -110,7 +110,7 @@ export default function ContactForm({ formDict, className }: ContactFormProps) {
 
       {submitStatus === 'success' && (
         <div className="mt-4 p-4 bg-[var(--color-success)] bg-opacity-10 border border-[var(--color-success)] rounded-lg">
-          <p className="text-[var(--color-success)] text-center font-medium">
+          <p className="text-white text-center font-medium">
             {formDict.successMsg}
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function ContactForm({ formDict, className }: ContactFormProps) {
 
       {submitStatus === 'error' && (
         <div className="mt-4 p-4 bg-[var(--color-error)] bg-opacity-10 border border-[var(--color-error)] rounded-lg">
-          <p className="text-[var(--color-error)] text-center">{errorMessage}</p>
+          <p className="text-white text-center">{errorMessage}</p>
         </div>
       )}
     </form>
