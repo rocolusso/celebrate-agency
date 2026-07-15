@@ -2,10 +2,10 @@
   {
     "id": "1",
     "title": {
-      "ru": "День рождения Софии - 7 лет",
-      "ro": "Ziua de naștere a Sofiei - 7 ani"
+      "ru": "День защиты детей в детском саду",
+      "ro": "Ziua Internațională a Copilului la grădiniță"
     },
-    "slug": "den-rozhdeniya-sofii-7-let",
+    "slug": "ziua-internationala-a-copilului-la-gradinita",
     "date": "2024-03-15",
     "featuredImage": "/images/events/event-1-featured.jpg",
     "images": [
@@ -14,12 +14,25 @@
       "/images/events/event-1-3.jpg",
       "/images/events/event-1-4.jpg",
       "/images/events/event-1-5.jpg",
-      "/images/events/event-1-6.jpg"
+      "/images/events/event-1-6.jpg",
+      "/images/events/event-1-7.jpg",
+      "/images/events/event-1-8.jpg",
+      "/images/events/event-1-9.jpg",
+      "/images/events/event-1-10.jpg",
+      "/images/events/event-1-11.jpg",
+      "/images/events/event-1-12.jpg",
+      "/images/events/event-1-13.jpg",
+      "/images/events/event-1-14.jpg",
+      "/images/events/event-1-15.jpg",
+      "/images/events/event-1-16.jpg",
+      "/images/events/event-1-17.jpg",
+      "/images/events/event-1-18.jpg",
+      "/images/events/event-1-19.jpg"
     ],
-    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "youtubeUrl": null,
     "description": {
-      "ru": "Яркий праздник с персонажами Щенячий патруль. Дети были в восторге от игр, конкурсов и вынесения торта!",
-      "ro": "O sărbătoare strălucitoare cu personajele Patrula Cățeilor. Copiii au fost încântați de jocuri, concursuri și servirea tortului!"
+      "ru": "В первый день лета детский сад наполнился радостью, смехом и яркими эмоциями! Любимые герои — Фиксики, Куроми, Стич и Чебурашка — пришли поздравить ребят с Международным днём защиты детей и подарили им настоящий праздник.\nВесёлые игры, зажигательные развлечения, волшебное шоу мыльных пузырей и яркий аквагрим превратили этот день в незабываемое приключение. Улыбки детей, счастливые глаза и море положительных эмоций стали лучшим подтверждением того, что праздник удался!",
+      "ro": "În prima zi de vară, grădinița s-a umplut de bucurie, zâmbete și voie bună! Personajele îndrăgite – Fixiki, Kuromi, Stitch și Ceburașka – au venit să-i felicite pe cei mici cu ocazia Zilei Internaționale a Copilului și le-au oferit o adevărată sărbătoare.\nJocurile distractive, activitățile interactive, spectaculosul show cu baloane de săpun și pictura pe față au transformat această zi într-o aventură de neuitat. Zâmbetele copiilor, privirile lor pline de fericire și emoțiile pozitive au fost cea mai frumoasă dovadă că sărbătoarea a fost un adevărat succes!"
     }
   },
   {
