@@ -28,9 +28,9 @@ export default function EventCard({ event, locale, btnText }: EventCardProps) {
         />
       </div>
       <div className="p-6">
-        { /*<p className="text-sm text-[var(--color-gray)] mb-2">*/ }
-        { /*  {formatDate(event.date, locale)}*/ }
-        { /*</p>*/ }
+        { /* <p className="text-sm text-[var(--color-gray)] mb-2"> */ }
+        { /*  {formatDate(event.date, locale)} */ }
+        { /* </p> */ }
         <h3 className="text-xl font-bold text-[var(--color-navy)] mb-4 group-hover:text-[var(--color-hot-pink)] transition-colors">
           {event.title[locale]}
         </h3>
