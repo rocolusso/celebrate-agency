@@ -77,13 +77,13 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   </div>
                 </div>
 
-                <div className="bg-[var(--color-cream)] rounded-xl p-6">
-                  <h3 className="font-bold text-[var(--color-navy)] mb-3 flex items-center gap-2">
-                    <span className="text-2xl">📍</span>
-                    {dict.page.address}
-                  </h3>
-                  <p className="text-[var(--color-gray)]">{contactData.address.full}</p>
-                </div>
+                {/*<div className="bg-[var(--color-cream)] rounded-xl p-6">*/}
+                {/*  <h3 className="font-bold text-[var(--color-navy)] mb-3 flex items-center gap-2">*/}
+                {/*    <span className="text-2xl">📍</span>*/}
+                {/*    {dict.page.address}*/}
+                {/*  </h3>*/}
+                {/*  <p className="text-[var(--color-gray)]">{contactData.address.full}</p>*/}
+                {/*</div>*/}
 
                 <div className="bg-[var(--color-cream)] rounded-xl p-6">
                   <h3 className="font-bold text-[var(--color-navy)] mb-3 flex items-center gap-2">

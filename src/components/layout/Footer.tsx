@@ -58,7 +58,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                     </a>
                   </li>
                 ))}
-                <li className="text-gray-300">{contactData.address.full}</li>
+                {/*<li className="text-gray-300">{contactData.address.full}</li>*/}
                 <li>
                   <a
                     href={contactData.social.instagram}
