@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import { formatDate } from '@/lib/utils';
+// import { formatDate } from '@/lib/utils';
 import type { Event } from '@/lib/types';
 import type { Locale } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';

@@ -9,7 +9,7 @@ import ContactFormSection from '@/components/sections/ContactFormSection';
 import ServiceCard from '@/components/cards/ServiceCard';
 import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
-import { formatDate } from '@/lib/utils';
+// import { formatDate } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
 import type { Event, Service } from '@/lib/types';
