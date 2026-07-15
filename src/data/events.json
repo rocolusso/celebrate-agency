@@ -38,21 +38,30 @@
   {
     "id": "2",
     "title": {
-      "ru": "Праздник с Единорожкой - 5 лет Алисе",
-      "ro": "Petrecere cu Unicornul - 5 ani pentru Alisa"
+      "ru": "День рождения Макара",
+      "ro": "Ziua de naștere a lui Makar"
     },
-    "slug": "prazdnik-s-edinorozhkoj-5-let-alise",
+    "slug": "ziua-de-nastere-a-lui-makar",
     "date": "2024-02-28",
     "featuredImage": "/images/events/event-2-featured.jpg",
     "images": [
       "/images/events/event-2-1.jpg",
       "/images/events/event-2-2.jpg",
       "/images/events/event-2-3.jpg",
-      "/images/events/event-2-4.jpg"
+      "/images/events/event-2-4.jpg",
+      "/images/events/event-2-5.jpg",
+      "/images/events/event-2-6.jpg",
+      "/images/events/event-2-7.jpg",
+      "/images/events/event-2-8.jpg",
+      "/images/events/event-2-9.jpg",
+      "/images/events/event-2-10.jpg",
+      "/images/events/event-2-11.jpg",
+      "/images/events/event-2-12.jpg",
+      "/images/events/event-2-13.jpg"
     ],
     "description": {
-      "ru": "Волшебный праздник с Единорожкой. Дети участвовали в интерактивных играх, танцевали и получили фигурки из шаров.",
-      "ro": "O sărbătoare magică cu Unicornul. Copiii au participat la jocuri interactive, au dansat și au primit figurine din baloane."
+      "ru": "День рождения Макара превратился в настоящее супергеройское приключение! Бэтмен и Человек-паук подарили имениннику и его друзьям море ярких эмоций, увлекая всех в захватывающие игры, весёлые испытания и супергеройские задания.\nНастоящей кульминацией праздника стало эффектное появление Трансформеров, которое вызвало восторг у всех гостей. Этот день подарил множество счастливых улыбок, незабываемых впечатлений и стал ярким воспоминанием для именинника и его друзей!",
+      "ro": "Ziua de naștere a lui Makar s-a transformat într-o adevărată aventură cu supereroi! Batman și Spider-Man i-au oferit sărbătoritului și prietenilor săi o mulțime de emoții pozitive, implicându-i în jocuri captivante, provocări distractive și misiuni de supereroi.\nMomentul culminant al petrecerii a fost apariția spectaculoasă a Transformerilor, care a stârnit entuziasmul tuturor invitaților. Această zi a fost plină de zâmbete, bucurie și amintiri de neuitat pentru Makar și toți cei prezenți."
     }
   },
   {
