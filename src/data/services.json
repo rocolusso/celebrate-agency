@@ -251,12 +251,12 @@
     "id": "9",
     "name": {
       "ru": "Фиксики",
-      "ro": "Fixiții"
+      "ro": "Fixiki"
     },
     "slug": "fiksiki",
     "description": {
       "ru": "Любимые герои мультсериала Фиксики! Нолик, Симка и их друзья научат детей новому и устроят веселые приключения.",
-      "ro": "Personajele îndrăgite din desenul animat Fixiții! Nolik, Simka și prietenii lor vor învăța copiii lucruri noi și vor organiza aventuri vesele."
+      "ro": "Personajele îndrăgite din desenul animat Fixiki! Nolik, Simka și prietenii lor vor învăța copiii lucruri noi și vor organiza aventuri vesele."
     },
     "image": "/images/services/fiksiki.jpg",
     "gallery": [
@@ -344,12 +344,12 @@
     "id": "12",
     "name": {
       "ru": "Щенячий патруль",
-      "ro": "Patrula Cățeilor"
+      "ro": "Patrula Catelusilor"
     },
     "slug": "shchenyachij-patrul",
     "description": {
       "ru": "Храбрые щенки из Щенячьего патруля готовы к спасательным миссиям! Райдер и его команда проведут захватывающие игры.",
-      "ro": "Căței curajoși din Patrula Cățeilor sunt gata pentru misiuni de salvare! Rider și echipa sa vor conduce jocuri captivante."
+      "ro": "Căței curajoși din Patrula Catelusilor sunt gata pentru misiuni de salvare! Rider și echipa sa vor conduce jocuri captivante."
     },
     "image": "/images/services/shchenyachij-patrul.jpg",
     "gallery": [
