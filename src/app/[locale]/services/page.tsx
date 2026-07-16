@@ -2,9 +2,11 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import ServicesGrid from '@/components/sections/ServicesGrid';
+import SeoBlock from '@/components/seo/SeoBlock';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
+import { getPageSeo } from '@/lib/seo';
 
 interface ServicesPageProps {
   params: Promise<{ locale: Locale }>;
@@ -24,6 +26,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale, 'services');
   const commonDict = await getDictionary(locale, 'common');
+  const seo = await getPageSeo(locale, 'services');
 
   return (
     <main>
@@ -46,6 +49,11 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
         title={dict.page.h1}
         btnText={commonDict.cards.more}
         showTitle={false}
+      />
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
       />
     </main>
   );

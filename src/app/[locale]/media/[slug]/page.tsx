@@ -7,11 +7,13 @@ import PhotoGallery from '@/components/media/PhotoGallery';
 import YouTubeEmbed from '@/components/media/YouTubeEmbed';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 import ServiceCard from '@/components/cards/ServiceCard';
+import SeoBlock from '@/components/seo/SeoBlock';
 import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
 // import { formatDate } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getMediaSeo } from '@/lib/seo';
 import type { Event, Service } from '@/lib/types';
 
 interface EventPageProps {
@@ -29,10 +31,12 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   const { locale, slug } = await params;
   const event = (eventsData as Event[]).find((e) => e.slug === slug);
   if (!event) return { title: 'Not found' };
+  const seo = await getMediaSeo(locale, slug);
+  if (!seo) return { title: 'Not found' };
 
   return {
-    title: event.title[locale],
-    description: event.description?.[locale] ?? event.title[locale],
+    title: seo.meta.title,
+    description: seo.meta.description,
     alternates: generateAlternates(locale, `/media/${slug}`),
   };
 }
@@ -45,6 +49,8 @@ export default async function EventPage({ params }: EventPageProps) {
   const dict = await getDictionary(locale, 'media');
   const contactDict = await getDictionary(locale, 'contact');
   const commonDict = await getDictionary(locale, 'common');
+  const seo = await getMediaSeo(locale, slug);
+  if (!seo) notFound();
 
   return (
     <main>
@@ -139,6 +145,11 @@ export default async function EventPage({ params }: EventPageProps) {
           </div>
         </Container>
       </section>
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
+      />
     </main>
   );
 }

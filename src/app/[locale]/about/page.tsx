@@ -2,8 +2,10 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import SeoBlock from '@/components/seo/SeoBlock';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getPageSeo } from '@/lib/seo';
 import { BASE_PRICE } from '@/lib/constants';
 
 interface AboutPageProps {
@@ -23,6 +25,8 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
 export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale, 'about');
+  const commonDict = await getDictionary(locale, 'common');
+  const seo = await getPageSeo(locale, 'about');
 
   const programTitle = dict.program.title
     .replace('{price}', String(BASE_PRICE))
@@ -111,6 +115,11 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </div>
         </Container>
       </section>
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
+      />
     </main>
   );
 }

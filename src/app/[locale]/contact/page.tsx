@@ -2,9 +2,11 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import ContactForm from '@/components/forms/ContactForm';
+import SeoBlock from '@/components/seo/SeoBlock';
 import contactData from '@/data/contact.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
+import { getPageSeo } from '@/lib/seo';
 
 interface ContactPageProps {
   params: Promise<{ locale: Locale }>;
@@ -23,6 +25,8 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
 export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale, 'contact');
+  const commonDict = await getDictionary(locale, 'common');
+  const seo = await getPageSeo(locale, 'contact');
   const { workingHours } = dict.page;
 
   return (
@@ -115,6 +119,11 @@ export default async function ContactPage({ params }: ContactPageProps) {
           </div>
         </Container>
       </section>
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
+      />
     </main>
   );
 }

@@ -8,10 +8,12 @@ import Button from '@/components/ui/Button';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 import ServiceCard from '@/components/cards/ServiceCard';
 import PhotoGallery from '@/components/media/PhotoGallery';
+import SeoBlock from '@/components/seo/SeoBlock';
 import servicesData from '@/data/services.json';
 import { formatPrice } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getServiceSeo } from '@/lib/seo';
 import type { Service } from '@/lib/types';
 
 interface ServicePageProps {
@@ -29,11 +31,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const { locale, slug } = await params;
   const service = (servicesData as Service[]).find((s) => s.slug === slug);
   if (!service) return { title: 'Not found' };
-  const dict = await getDictionary(locale, 'services');
+  const seo = await getServiceSeo(locale, slug);
+  if (!seo) return { title: 'Not found' };
 
   return {
-    title: `${service.name[locale]} - ${dict.detail.labels.price} ${formatPrice(service.price)}`,
-    description: service.description[locale],
+    title: seo.meta.title,
+    description: seo.meta.description,
     alternates: generateAlternates(locale, `/services/${slug}`),
   };
 }
@@ -46,6 +49,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const dict = await getDictionary(locale, 'services');
   const contactDict = await getDictionary(locale, 'contact');
   const commonDict = await getDictionary(locale, 'common');
+  const seo = await getServiceSeo(locale, slug);
+  if (!seo) notFound();
   const relatedServices = (servicesData as Service[]).filter((s) => s.id !== service.id);
 
   return (
@@ -188,6 +193,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
         subtitle={contactDict.form.sectionSubtitle}
         directLabel={contactDict.form.directLabel}
         formDict={contactDict.form}
+      />
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
       />
     </main>
   );

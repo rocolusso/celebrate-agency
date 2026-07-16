@@ -2,9 +2,11 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
 import EventCard from '@/components/cards/EventCard';
+import SeoBlock from '@/components/seo/SeoBlock';
 import eventsData from '@/data/events.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
+import { getPageSeo } from '@/lib/seo';
 import type { Event } from '@/lib/types';
 
 interface MediaPageProps {
@@ -25,6 +27,7 @@ export default async function MediaPage({ params }: MediaPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale, 'media');
   const commonDict = await getDictionary(locale, 'common');
+  const seo = await getPageSeo(locale, 'media');
 
   const sortedEvents = [...(eventsData as Event[])].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -59,6 +62,11 @@ export default async function MediaPage({ params }: MediaPageProps) {
           </div>
         </Container>
       </section>
+      <SeoBlock
+        sections={seo.sections}
+        readMore={commonDict.seo.readMore}
+        readLess={commonDict.seo.readLess}
+      />
     </main>
   );
 }
