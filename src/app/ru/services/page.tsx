@@ -1,0 +1,10 @@
+import type { Metadata } from 'next';
+import { generateServicesListMetadata, ServicesListContent } from '@/app/_locale-pages/services-list-page';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateServicesListMetadata('ru');
+}
+
+export default function Page() {
+  return <ServicesListContent locale="ru" />;
+}

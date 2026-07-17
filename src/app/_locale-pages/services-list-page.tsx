@@ -8,12 +8,7 @@ import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
 
-interface ServicesPageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export async function generateMetadata({ params }: ServicesPageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateServicesListMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'services');
   return {
     title: dict.page.meta.title,
@@ -22,8 +17,7 @@ export async function generateMetadata({ params }: ServicesPageProps): Promise<M
   };
 }
 
-export default async function ServicesPage({ params }: ServicesPageProps) {
-  const { locale } = await params;
+export async function ServicesListContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'services');
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'services');

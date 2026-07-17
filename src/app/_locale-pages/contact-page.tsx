@@ -8,12 +8,7 @@ import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
 
-interface ContactPageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateContactMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'contact');
   return {
     title: dict.meta.title,
@@ -22,8 +17,7 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
   };
 }
 
-export default async function ContactPage({ params }: ContactPageProps) {
-  const { locale } = await params;
+export async function ContactPageContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'contact');
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'contact');
@@ -80,14 +74,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
                     ))}
                   </div>
                 </div>
-
-                {/* <div className="bg-[var(--color-cream)] rounded-xl p-6"> */}
-                {/*  <h3 className="font-bold text-[var(--color-navy)] mb-3 flex items-center gap-2"> */}
-                {/*    <span className="text-2xl">📍</span> */}
-                {/*    {dict.page.address} */}
-                {/*  </h3> */}
-                {/*  <p className="text-[var(--color-gray)]">{contactData.address.full}</p> */}
-                {/* </div> */}
 
                 <div className="bg-[var(--color-cream)] rounded-xl p-6">
                   <h3 className="font-bold text-[var(--color-navy)] mb-3 flex items-center gap-2">

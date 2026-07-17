@@ -8,12 +8,7 @@ import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
 import { BASE_PRICE } from '@/lib/constants';
 
-interface AboutPageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateAboutMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'about');
   return {
     title: dict.meta.title,
@@ -22,8 +17,7 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
   };
 }
 
-export default async function AboutPage({ params }: AboutPageProps) {
-  const { locale } = await params;
+export async function AboutPageContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'about');
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'about');

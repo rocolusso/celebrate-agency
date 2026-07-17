@@ -11,14 +11,8 @@ import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
 
-interface HomePageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'home');
-
   return {
     title: dict.meta.title,
     description: dict.meta.description,
@@ -26,8 +20,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
-export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
+export async function HomePageContent({ locale }: { locale: Locale }) {
   const homeDict = await getDictionary(locale, 'home');
   const contactDict = await getDictionary(locale, 'contact');
   const commonDict = await getDictionary(locale, 'common');

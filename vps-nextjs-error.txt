@@ -1,0 +1,1293 @@
+ubuntu@vcn-oracle:~/apps/domovenok.md/celebrate-agency$ yarn start
+yarn run v1.22.22
+$ next start
+   ▲ Next.js 15.4.10
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.209:3000
+
+ ✓ Starting...
+ ✓ Ready in 659ms
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '3506936233'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2423596624'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '3506936233'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2423596624'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+[Error: Failed to find Server Action "c78bcdf0". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action]
+[Error: Failed to find Server Action "f1c7be35". This request might be from an older or newer deployment.
+Read more: https://nextjs.org/docs/messages/failed-to-find-server-action]
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'common')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at r (.next/server/chunks/1386.js:1:13025) {
+  digest: '2888586662'
+}
+ ⨯ TypeError: Cannot read properties of undefined (reading 'home')
+    at f (.next/server/chunks/1386.js:1:15715)
+    at w (.next/server/app/[locale]/page.js:2:14091) {
+  digest: '2311261151'
+}

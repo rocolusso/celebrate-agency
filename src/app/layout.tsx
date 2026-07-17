@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 // import { SpeedInsights } from '@vercel/speed-insights/next';
-import { headers } from 'next/headers';
 import './globals.css';
 
 const geistSans = Geist({
@@ -22,16 +21,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const locale = headersList.get('x-locale') || 'ro';
-
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang="ro" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Analytics />
         {/* <SpeedInsights /> */}

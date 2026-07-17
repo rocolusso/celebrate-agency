@@ -16,24 +16,14 @@ import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
 import { getServiceSeo } from '@/lib/seo';
 import type { Service } from '@/lib/types';
 
-interface ServicePageProps {
-  params: Promise<{ locale: Locale; slug: string }>;
-}
-
-export async function generateStaticParams() {
-  const locales: Locale[] = ['ro', 'ru'];
-  return locales.flatMap((locale) =>
-    servicesData.map((service) => ({ locale, slug: service.slug }))
-  );
-}
-
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
+export async function generateServiceDetailMetadata(
+  locale: Locale,
+  slug: string
+): Promise<Metadata> {
   const service = (servicesData as Service[]).find((s) => s.slug === slug);
   if (!service) return { title: 'Not found' };
   const seo = await getServiceSeo(locale, slug);
   if (!seo) return { title: 'Not found' };
-
   return {
     title: seo.meta.title,
     description: seo.meta.description,
@@ -41,8 +31,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   };
 }
 
-export default async function ServicePage({ params }: ServicePageProps) {
-  const { locale, slug } = await params;
+export async function ServiceDetailContent({
+  locale,
+  slug,
+}: {
+  locale: Locale;
+  slug: string;
+}) {
   const service = (servicesData as Service[]).find((s) => s.slug === slug);
   if (!service) notFound();
 
@@ -51,6 +46,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getServiceSeo(locale, slug);
   if (!seo) notFound();
+
   const relatedServices = (servicesData as Service[]).filter((s) => s.id !== service.id);
 
   return (

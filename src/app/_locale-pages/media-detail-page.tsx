@@ -10,30 +10,19 @@ import ServiceCard from '@/components/cards/ServiceCard';
 import SeoBlock from '@/components/seo/SeoBlock';
 import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
-// import { formatDate } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
 import { getMediaSeo } from '@/lib/seo';
 import type { Event, Service } from '@/lib/types';
 
-interface EventPageProps {
-  params: Promise<{ locale: Locale; slug: string }>;
-}
-
-export async function generateStaticParams() {
-  const locales: Locale[] = ['ro', 'ru'];
-  return locales.flatMap((locale) =>
-    eventsData.map((event) => ({ locale, slug: event.slug }))
-  );
-}
-
-export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
+export async function generateMediaDetailMetadata(
+  locale: Locale,
+  slug: string
+): Promise<Metadata> {
   const event = (eventsData as Event[]).find((e) => e.slug === slug);
   if (!event) return { title: 'Not found' };
   const seo = await getMediaSeo(locale, slug);
   if (!seo) return { title: 'Not found' };
-
   return {
     title: seo.meta.title,
     description: seo.meta.description,
@@ -41,8 +30,13 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   };
 }
 
-export default async function EventPage({ params }: EventPageProps) {
-  const { locale, slug } = await params;
+export async function MediaDetailContent({
+  locale,
+  slug,
+}: {
+  locale: Locale;
+  slug: string;
+}) {
   const event = (eventsData as Event[]).find((e) => e.slug === slug);
   if (!event) notFound();
 
@@ -75,7 +69,6 @@ export default async function EventPage({ params }: EventPageProps) {
           </nav>
 
           <div className="text-center max-w-3xl mx-auto">
-            { /* <p className="text-[var(--color-gray)] mb-2">{formatDate(event.date, locale)}</p> */ }
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-4">
               {event.title[locale]}
             </h1>

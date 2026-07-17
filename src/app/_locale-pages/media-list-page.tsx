@@ -9,12 +9,7 @@ import { generateAlternates } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
 import type { Event } from '@/lib/types';
 
-interface MediaPageProps {
-  params: Promise<{ locale: Locale }>;
-}
-
-export async function generateMetadata({ params }: MediaPageProps): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMediaListMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'media');
   return {
     title: dict.page.meta.title,
@@ -23,8 +18,7 @@ export async function generateMetadata({ params }: MediaPageProps): Promise<Meta
   };
 }
 
-export default async function MediaPage({ params }: MediaPageProps) {
-  const { locale } = await params;
+export async function MediaListContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'media');
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'media');
