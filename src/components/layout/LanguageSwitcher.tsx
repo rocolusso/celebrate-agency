@@ -34,7 +34,6 @@ export default function LanguageSwitcher({ locale, ariaLabel }: LanguageSwitcher
             : 'text-[var(--color-navy)] hover:text-[var(--color-hot-pink)]'
         }`}
       >
-        <span>🇷🇴</span>
         <span>RO</span>
       </Link>
       <span className="text-[var(--color-gray)] text-sm">|</span>
@@ -46,7 +45,6 @@ export default function LanguageSwitcher({ locale, ariaLabel }: LanguageSwitcher
             : 'text-[var(--color-navy)] hover:text-[var(--color-hot-pink)]'
         }`}
       >
-        <span>🇷🇺</span>
         <span>RU</span>
       </Link>
     </div>

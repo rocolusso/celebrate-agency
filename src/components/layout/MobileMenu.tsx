@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button from '@/components/ui/Button';
-import LanguageSwitcher from './LanguageSwitcher';
 import { NAV_HREFS } from '@/lib/constants';
 import type { Locale, Dict } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';
@@ -70,10 +69,6 @@ export default function MobileMenu({
             </Link>
           ))}
         </nav>
-
-        <div className="px-6 mt-6">
-          <LanguageSwitcher locale={locale} ariaLabel={dict.langSwitcher.ariaLabel} />
-        </div>
 
         <div className="px-6 mt-6">
           <Button href={getLocaleHref(locale, '/contact')} className="w-full" onClick={onClose}>
