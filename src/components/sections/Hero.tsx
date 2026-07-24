@@ -40,7 +40,7 @@ export default function Hero({
 
       {/* Content */}
       <Container className="relative z-10 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg leading-tight text-balance">
           {title}
         </h1>
         <p className="text-xl md:text-2xl text-white mb-8 drop-shadow-md">
