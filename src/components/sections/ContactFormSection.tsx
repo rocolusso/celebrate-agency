@@ -53,6 +53,9 @@ export default function ContactFormSection({
                   📞 {phone.formatted} ({phone.name})
                 </a>
               ))}
+              <span className="text-[var(--color-electric-blue)] font-medium text-lg">
+                📍 {contactData.address.full}
+              </span>
               <a
                 href={contactData.social.instagram}
                 target="_blank"
