@@ -54,11 +54,7 @@ export default function RootLayout({
     <html lang="ro" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${rubikMonoOne.variable} ${comfortaa.variable} ${onest.variable} antialiased`}>
         <Analytics />
-        <Script
-            src="https://analytics.ahrefs.com/analytics.js"
-            data-key="H4CpaqPIT7ENOeCOtKKbCA"
-            strategy="afterInteractive"
-        />
+        <Script src="https://analytics.ahrefs.com/analytics.js" data-key="H4CpaqPIT7ENOeCOtKKbCA" strategy="afterInteractive"/>
         {/* <SpeedInsights /> */}
         {children}
       </body>
