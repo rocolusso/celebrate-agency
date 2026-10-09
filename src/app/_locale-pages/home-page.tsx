@@ -10,11 +10,12 @@ import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { generateAlternates } from '@/lib/i18n-utils';
 import { getPageSeo } from '@/lib/seo';
+import { applyTitleTemplate } from '@/lib/site-metadata';
 
 export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'home');
   return {
-    title: dict.meta.title,
+    title: { absolute: applyTitleTemplate(dict.meta.title) },
     description: dict.meta.description,
     alternates: generateAlternates(locale, '/'),
   };
