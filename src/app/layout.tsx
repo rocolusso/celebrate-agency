@@ -5,6 +5,7 @@ import {
 import { Analytics } from '@vercel/analytics/react';
 // import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
