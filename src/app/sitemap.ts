@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
 import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+import { buildLocaleUrls } from '@/lib/i18n-utils';
 
 const STATIC_PATHS = ['', '/about', '/contact', '/services', '/media'] as const;
 
@@ -10,23 +9,11 @@ function toSitemapLastMod(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
 
-function buildLanguageAlternates(path: string): Record<string, string> {
-  const cleanPath = path === '/' ? '' : path;
-  const roUrl = `${BASE_URL}${cleanPath || '/'}`;
-  const ruUrl = `${BASE_URL}/ru${cleanPath || ''}`;
-
-  return {
-    ro: roUrl,
-    ru: ruUrl,
-    'x-default': roUrl,
-  };
-}
-
 function entriesForPath(
   path: string,
   lastModified: string
 ): MetadataRoute.Sitemap {
-  const languages = buildLanguageAlternates(path);
+  const languages = buildLocaleUrls(path);
   const { ro: roUrl, ru: ruUrl } = languages;
 
   return [
