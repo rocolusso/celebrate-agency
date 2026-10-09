@@ -2,6 +2,20 @@ export type Locale = 'ro' | 'ru';
 export const locales: Locale[] = ['ro', 'ru'];
 export const defaultLocale: Locale = 'ro';
 
+export interface LocaleMeta {
+  /** Value for <html lang> and for the self-referencing hreflang (must always match). */
+  htmlLang: string;
+  /** Value for og:locale. */
+  ogLocale: string;
+  /** URL path prefix of the locale (empty for the default locale). */
+  pathPrefix: string;
+}
+
+export const LOCALE_META: Record<Locale, LocaleMeta> = {
+  ro: { htmlLang: 'ro', ogLocale: 'ro_RO', pathPrefix: '' },
+  ru: { htmlLang: 'ru', ogLocale: 'ru_RU', pathPrefix: '/ru' },
+};
+
 export type Namespace = 'common' | 'home' | 'services' | 'media' | 'about' | 'contact';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
