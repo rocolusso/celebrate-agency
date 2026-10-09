@@ -1,19 +1,35 @@
-import type { Locale } from './i18n';
+import {
+  defaultLocale,
+  LOCALE_META,
+  locales,
+  type Locale,
+} from './i18n';
+import { absoluteUrl } from './site-config';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://domovenok.md';
+function localizedPath(locale: Locale, pathname: string): string {
+  const cleanPath = pathname === '/' ? '' : pathname;
+  return `${LOCALE_META[locale].pathPrefix}${cleanPath}` || '/';
+}
+
+/**
+ * Absolute URLs of one page in every locale, keyed by hreflang value
+ * (the same value as <html lang>), plus `x-default` pointing to the default locale.
+ */
+export function buildLocaleUrls(pathname: string): Record<string, string> {
+  const urls = Object.fromEntries(
+    locales.map((locale): [string, string] => [
+      LOCALE_META[locale].htmlLang,
+      absoluteUrl(localizedPath(locale, pathname)),
+    ])
+  );
+  return { ...urls, 'x-default': urls[LOCALE_META[defaultLocale].htmlLang] };
+}
 
 export function generateAlternates(locale: Locale, pathname: string) {
-  const cleanPath = pathname === '/' ? '' : pathname;
-  const roUrl = `${BASE_URL}${cleanPath || '/'}`;
-  const ruUrl = `${BASE_URL}/ru${cleanPath || ''}`;
-
+  const languages = buildLocaleUrls(pathname);
   return {
-    canonical: locale === 'ro' ? roUrl : ruUrl,
-    languages: {
-      ro: roUrl,
-      ru: ruUrl,
-      'x-default': roUrl,
-    },
+    canonical: languages[LOCALE_META[locale].htmlLang],
+    languages,
   };
 }
 
