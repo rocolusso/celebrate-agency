@@ -1,16 +1,15 @@
 import React from 'react';
 import contactData from '@/data/contact.json';
 import { SITE_NAME } from '@/lib/constants';
-import type { Locale } from '@/lib/i18n';
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://domovenok.md';
+import { LOCALE_META, type Locale } from '@/lib/i18n';
+import { SITE_URL } from '@/lib/site-config';
 
 interface LocalBusinessJsonLdProps {
   locale: Locale;
 }
 
 export default function LocalBusinessJsonLd({ locale }: LocalBusinessJsonLdProps) {
-  const url = locale === 'ru' ? `${BASE_URL}/ru` : BASE_URL;
+  const url = `${SITE_URL}${LOCALE_META[locale].pathPrefix}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
