@@ -6,6 +6,7 @@ import ServicesGrid from '@/components/sections/ServicesGrid';
 import Features from '@/components/sections/Features';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 import SeoBlock from '@/components/seo/SeoBlock';
+import WebSiteJsonLd from '@/components/seo/WebSiteJsonLd';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { getPageSeo } from '@/lib/seo';
@@ -28,6 +29,7 @@ export async function HomePageContent({ locale }: { locale: Locale }) {
 
   return (
     <main>
+      <WebSiteJsonLd locale={locale} />
       <Hero
         title={homeDict.hero.title}
         subtitle={homeDict.hero.subtitle}
