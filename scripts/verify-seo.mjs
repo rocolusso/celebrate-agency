@@ -17,6 +17,11 @@
  *   A7 exactly one <html> and one <body>
  *   A8 an unknown URL gives a 404 with a non-empty <html lang> and noindex
  *   A9 canonical and hreflang equal the sitemap <loc> / xhtml:link strings exactly
+ *   A10 Open Graph set is complete (title, description, type, url, image, site_name, locale),
+ *       og:url equals the canonical, og:locale:alternate lists the other locale, twitter:card is set
+ *   A11 og:image is an absolute same-origin URL with width, height, type and alt; twitter:image equals it
+ *   A12 the og:image file really exists (build: in public/, live: HTTP 200 + image content-type)
+ *       and its real format and dimensions equal og:image:type / width / height
  * Exit code 1 if any check fails.
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -31,6 +36,8 @@ const liveOrigin = argValue('--live')?.replace(/\/+$/, '');
 const buildDir = argValue('--build') ?? '.';
 const OG_LOCALE = { ro: 'ro_RO', ru: 'ru_RU' };
 const EXPECTED_HREFLANG = ['ro', 'ru', 'x-default'];
+const OG_REQUIRED = ['og:title', 'og:description', 'og:type', 'og:url', 'og:image', 'og:site_name', 'og:locale'];
+const OG_SINGLE = [...OG_REQUIRED, 'og:image:width', 'og:image:height', 'og:image:type', 'og:image:alt', 'twitter:card', 'twitter:image'];
 
 const attr = (tag, name) => (tag.match(new RegExp(`\\b${name}="([^"]*)"`, 'i')) || [])[1] ?? null;
 
@@ -49,6 +56,43 @@ function parseSitemap(xml) {
   return { entries, duplicates };
 }
 
+function imageInfo(buf) {
+  if (buf.length > 24 && buf.readUInt32BE(0) === 0x89504e47) {
+    return { type: 'image/png', width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < buf.length) {
+      if (buf[i] !== 0xff) { i += 1; continue; }
+      const marker = buf[i + 1];
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return { type: 'image/jpeg', height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+      }
+      i += 2 + buf.readUInt16BE(i + 2);
+    }
+    return { type: 'image/jpeg', width: null, height: null };
+  }
+  return { type: null, width: null, height: null };
+}
+
+const imageCache = new Map();
+function loadImage(url) {
+  const { pathname } = new URL(url);
+  if (!imageCache.has(pathname)) {
+    imageCache.set(pathname, (async () => {
+      if (liveOrigin) {
+        const res = await fetch(`${liveOrigin}${pathname}`, { redirect: 'manual' });
+        const buf = Buffer.from(await res.arrayBuffer());
+        return { status: res.status, contentType: res.headers.get('content-type') ?? '', ...imageInfo(buf) };
+      }
+      const file = join(buildDir, 'public', decodeURIComponent(pathname));
+      if (!existsSync(file)) return { status: 404, contentType: '', type: null, width: null, height: null };
+      return { status: 200, contentType: '', ...imageInfo(readFileSync(file)) };
+    })());
+  }
+  return imageCache.get(pathname);
+}
+
 function analyze(html) {
   const links = [...html.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
   const hreflang = {};
@@ -59,7 +103,13 @@ function analyze(html) {
     if (rel === 'alternate' && attr(tag, 'hreflang')) hreflang[attr(tag, 'hreflang')] = attr(tag, 'href');
   });
   const htmlTag = (html.match(/<html\b[^>]*>/i) || [''])[0];
+  const meta = {};
+  for (const m of html.matchAll(/<meta\b[^>]*>/gi)) {
+    const key = attr(m[0], 'property') ?? attr(m[0], 'name');
+    if (key && /^(og|twitter):/i.test(key)) (meta[key] ??= []).push(attr(m[0], 'content') ?? '');
+  }
   return {
+    meta,
     htmlCount: (html.match(/<html[\s>]/gi) || []).length,
     bodyCount: (html.match(/<body[\s>]/gi) || []).length,
     lang: attr(htmlTag, 'lang'),
@@ -148,6 +198,49 @@ for (const loc of locs) {
     // A4: og:locale
     if (p.lang && OG_LOCALE[p.lang] && p.ogLocale !== OG_LOCALE[p.lang]) fail('A4', loc, `og:locale "${p.ogLocale}" does not match lang "${p.lang}"`);
 
+    // A10: Open Graph completeness
+    const one = (k) => p.meta[k]?.[0];
+    OG_REQUIRED.forEach((k) => {
+      if (!one(k)) fail('A10', loc, `missing ${k}`);
+    });
+    OG_SINGLE.forEach((k) => {
+      if ((p.meta[k]?.length ?? 0) > 1) fail('A10', loc, `duplicate ${k}`);
+    });
+    if (one('og:url') && one('og:url') !== p.canonical) fail('A10', loc, `og:url "${one('og:url')}" differs from canonical "${p.canonical}"`);
+    if (p.lang && OG_LOCALE[p.lang]) {
+      const expectedAlt = Object.values(OG_LOCALE).filter((v) => v !== OG_LOCALE[p.lang]).sort().join();
+      const actualAlt = [...(p.meta['og:locale:alternate'] ?? [])].sort().join();
+      if (actualAlt !== expectedAlt) fail('A10', loc, `og:locale:alternate "${actualAlt}" instead of "${expectedAlt}"`);
+    }
+    if (one('twitter:card') !== 'summary_large_image') fail('A10', loc, `twitter:card is "${one('twitter:card') ?? 'missing'}", expected summary_large_image`);
+
+    // A11: og:image tags
+    const img = one('og:image');
+    if (img) {
+      if (!/^https?:\/\//.test(img)) fail('A11', loc, `og:image is not absolute: ${img}`);
+      else if (new URL(img).origin !== new URL(loc).origin) fail('A11', loc, `og:image origin differs from the page origin: ${img}`);
+      ['og:image:width', 'og:image:height'].forEach((k) => {
+        if (!/^[1-9]\d*$/.test(one(k) ?? '')) fail('A11', loc, `${k} is missing or not a positive integer: ${one(k)}`);
+      });
+      if (!/^image\/(jpeg|png|webp)$/.test(one('og:image:type') ?? '')) fail('A11', loc, `og:image:type is missing or unsupported: ${one('og:image:type')}`);
+      if (!one('og:image:alt')) fail('A11', loc, 'missing og:image:alt');
+      if (one('twitter:image') !== img) fail('A11', loc, `twitter:image "${one('twitter:image')}" differs from og:image`);
+
+      // A12: the image file itself
+      if (/^https?:\/\//.test(img)) {
+        const file = await loadImage(img);
+        if (file.status !== 200) fail('A12', loc, `og:image is not available (HTTP ${file.status}): ${img}`);
+        else {
+          if (liveOrigin && !/^image\//i.test(file.contentType)) fail('A12', loc, `og:image content-type is "${file.contentType}": ${img}`);
+          if (!file.type) fail('A12', loc, `og:image is not a JPEG/PNG file: ${img}`);
+          else if (file.type !== one('og:image:type')) fail('A12', loc, `og:image:type "${one('og:image:type')}" differs from the real format "${file.type}"`);
+          if (String(file.width) !== one('og:image:width') || String(file.height) !== one('og:image:height')) {
+            fail('A12', loc, `og:image size ${one('og:image:width')}x${one('og:image:height')} differs from the real ${file.width}x${file.height}`);
+          }
+        }
+      }
+    }
+
     // A5: /index links
     p.indexLinks.forEach((href) => fail('A5', loc, `link to an /index path: ${href}`));
 
@@ -173,7 +266,7 @@ else {
 const checked = locs.length;
 console.log(`verify-seo (${liveOrigin ? `live ${liveOrigin}` : `build ${buildDir}`}): ${checked} sitemap URLs checked`);
 if (failures.length === 0) {
-  console.log('OK: all checks passed (A1-A9)');
+  console.log('OK: all checks passed (A1-A12)');
 } else {
   const byId = failures.reduce((acc, f) => ({ ...acc, [f.id]: (acc[f.id] ?? 0) + 1 }), {});
   console.log(`FAILED: ${failures.length} problem(s) -> ${Object.entries(byId).map(([k, v]) => `${k}: ${v}`).join(', ')}`);
