@@ -42,13 +42,25 @@ export interface ContactInfo {
     formatted: string;
   }>;
   address: {
-    city: string;
-    area: string;
-    street: string;
+    streetAddress: string;
+    postalCode: string;
+    locality: string;
+    country: string;
     full: string;
   };
+  geo: {
+    latitude: number;
+    longitude: number;
+  };
+  openingHours: {
+    days: string[];
+    opens: string;
+    closes: string;
+  };
+  mapUrl: string;
   social: {
     instagram: string;
+    facebook: string;
   };
   workingHours: string;
 }
