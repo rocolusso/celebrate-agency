@@ -1,6 +1,9 @@
 export const SITE_NAME = 'Domovenok';
 /** Alternative site name for the WebSite structured data (helps Google pick the site name in search results). */
 export const SITE_ALTERNATE_NAME = 'Domovenok.md';
+/** Business name as in the Google Business Profile (LocalBusiness `name`). */
+export const BUSINESS_NAME = 'Domovenok.md';
+export const BUSINESS_ALTERNATE_NAMES = ['Domovenok', 'Domovenok Animatori Balti Nordul Moldovei'];
 export const BASE_PRICE = 2500;
 
 export const NAV_HREFS = [

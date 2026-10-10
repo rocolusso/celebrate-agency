@@ -12,13 +12,33 @@
     }
   ],
   "address": {
-    "city": "Бельцы",
-    "area": "Decebal",
-    "street": "13A",
-    "full": "Balti, Decebal, 13A"
+    "streetAddress": "str. Decebal 13A",
+    "postalCode": "MD-3100",
+    "locality": "Bălți",
+    "country": "MD",
+    "full": "str. Decebal 13A, MD-3100 Bălți"
   },
+  "geo": {
+    "latitude": 47.75976,
+    "longitude": 27.91678
+  },
+  "openingHours": {
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "09:00",
+    "closes": "21:00"
+  },
+  "mapUrl": "https://maps.google.com/?cid=15323862979617950777",
   "social": {
-    "instagram": "https://instagram.com/domovenok.md"
+    "instagram": "https://instagram.com/domovenok.md",
+    "facebook": "https://www.facebook.com/groups/1395332204107882/"
   },
   "workingHours": "Ежедневно с 9:00 до 21:00"
 }
