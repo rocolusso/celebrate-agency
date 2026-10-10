@@ -9,11 +9,32 @@ export interface LocaleMeta {
   ogLocale: string;
   /** URL path prefix of the locale (empty for the default locale). */
   pathPrefix: string;
+  /** Open Graph / Twitter preview image of the locale (file in `public/`) and its alt text. */
+  ogImage: { path: string; alt: string };
 }
 
+/** Format shared by every Open Graph image; the real file size is checked by `verify:seo` (A12). */
+export const OG_IMAGE_FORMAT = { width: 1200, height: 630, type: 'image/jpeg' } as const;
+
 export const LOCALE_META: Record<Locale, LocaleMeta> = {
-  ro: { htmlLang: 'ro', ogLocale: 'ro_RO', pathPrefix: '' },
-  ru: { htmlLang: 'ru', ogLocale: 'ru_RU', pathPrefix: '/ru' },
+  ro: {
+    htmlLang: 'ro',
+    ogLocale: 'ro_RO',
+    pathPrefix: '',
+    ogImage: {
+      path: '/images/opengraph-ro.jpg',
+      alt: 'Domovenok: animatori pentru petreceri de copii în Bălți',
+    },
+  },
+  ru: {
+    htmlLang: 'ru',
+    ogLocale: 'ru_RU',
+    pathPrefix: '/ru',
+    ogImage: {
+      path: '/images/opengraph.jpg',
+      alt: 'Domovenok: аниматоры для детских праздников в Бельцах',
+    },
+  },
 };
 
 export type Namespace = 'common' | 'home' | 'services' | 'media' | 'about' | 'contact';
