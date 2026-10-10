@@ -12,6 +12,8 @@ import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getMediaSeo } from '@/lib/seo';
 import type { Event, Service } from '@/lib/types';
@@ -47,8 +49,18 @@ export async function MediaDetailContent({
   const seo = await getMediaSeo(locale, slug);
   if (!seo) notFound();
 
+  const graph = await buildPageGraph({
+    locale,
+    path: `/media/${slug}`,
+    type: 'WebPage',
+    section: 'media',
+    leafName: event.title[locale],
+    image: event.featuredImage,
+  });
+
   return (
     <main>
+      <JsonLd graph={graph} />
       <section className="bg-gradient-to-br from-[var(--color-lavender)] to-[var(--color-soft-pink)] py-16 md:py-20">
         <Container>
           <nav className="mb-8 text-sm">

@@ -5,7 +5,6 @@ import Script from 'next/script';
 import '../globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd';
 import { getDictionary, LOCALE_META, type Locale } from '@/lib/i18n';
 import { fontVariableClasses } from '@/lib/fonts';
 
@@ -27,7 +26,6 @@ export default async function LocaleLayoutContent({
         <Analytics />
         <Script src="https://analytics.ahrefs.com/analytics.js" data-key="H4CpaqPIT7ENOeCOtKKbCA" strategy="afterInteractive" />
         {/* <SpeedInsights /> */}
-        <LocalBusinessJsonLd locale={locale} />
         <Navbar locale={locale} dict={dict} />
         {children}
         <Footer locale={locale} dict={dict} />

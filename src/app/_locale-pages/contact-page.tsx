@@ -5,6 +5,8 @@ import ContactForm from '@/components/forms/ContactForm';
 import SeoBlock from '@/components/seo/SeoBlock';
 import contactData from '@/data/contact.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 
@@ -23,8 +25,16 @@ export async function ContactPageContent({ locale }: { locale: Locale }) {
   const seo = await getPageSeo(locale, 'contact');
   const { workingHours } = dict.page;
 
+  const graph = await buildPageGraph({
+    locale,
+    path: '/contact',
+    type: 'ContactPage',
+    section: 'contact',
+  });
+
   return (
     <main>
+      <JsonLd graph={graph} />
       <section className="bg-gradient-to-br from-[var(--color-lavender)] to-[var(--color-soft-pink)] py-16 md:py-24">
         <Container>
           <div className="text-center max-w-3xl mx-auto">

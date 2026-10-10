@@ -5,6 +5,8 @@ import Button from '@/components/ui/Button';
 import SeoBlock from '@/components/seo/SeoBlock';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 import { BASE_PRICE } from '@/lib/constants';
@@ -31,8 +33,17 @@ export async function AboutPageContent({ locale }: { locale: Locale }) {
     .replace('{price}', String(BASE_PRICE))
     .replace('{city}', dict.program.city);
 
+  const graph = await buildPageGraph({
+    locale,
+    path: '/about',
+    type: 'AboutPage',
+    section: 'about',
+    aboutBusiness: true,
+  });
+
   return (
     <main>
+      <JsonLd graph={graph} />
       <section className="bg-gradient-to-br from-[var(--color-lavender)] to-[var(--color-soft-pink)] py-16 md:py-24">
         <Container>
           <div className="text-center max-w-3xl mx-auto">

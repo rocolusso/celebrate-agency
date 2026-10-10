@@ -13,6 +13,8 @@ import servicesData from '@/data/services.json';
 import { formatPrice } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getServiceSeo } from '@/lib/seo';
 import type { Service } from '@/lib/types';
@@ -50,8 +52,19 @@ export async function ServiceDetailContent({
 
   const relatedServices = (servicesData as Service[]).filter((s) => s.id !== service.id);
 
+  const graph = await buildPageGraph({
+    locale,
+    path: `/services/${slug}`,
+    type: 'WebPage',
+    section: 'services',
+    leafName: service.name[locale],
+    image: service.image,
+    service,
+  });
+
   return (
     <main>
+      <JsonLd graph={graph} />
       <section
         className="relative py-16 md:py-24"
         style={{ background: `linear-gradient(135deg, ${service.color}20 0%, ${service.color}10 100%)` }}

@@ -9,6 +9,5 @@ export function getLocaleHomeUrl(locale: Locale): string {
   return buildLocaleUrls('/')[LOCALE_META[locale].htmlLang];
 }
 
-/** Stable JSON-LD node ids: "<locale home url>#<node>". */
-export const businessNodeId = (locale: Locale): string => `${getLocaleHomeUrl(locale)}#business`;
+/** Stable id of the WebSite node: "<locale home url>#website" (the business id lives in schema-graph.ts). */
 export const websiteNodeId = (locale: Locale): string => `${getLocaleHomeUrl(locale)}#website`;

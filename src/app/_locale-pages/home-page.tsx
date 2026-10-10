@@ -6,10 +6,11 @@ import ServicesGrid from '@/components/sections/ServicesGrid';
 import Features from '@/components/sections/Features';
 import ContactFormSection from '@/components/sections/ContactFormSection';
 import SeoBlock from '@/components/seo/SeoBlock';
-import WebSiteJsonLd from '@/components/seo/WebSiteJsonLd';
+import JsonLd from '@/components/seo/JsonLd';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import { getPageSeo } from '@/lib/seo';
+import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata, formatHomeTitle } from '@/lib/site-metadata';
 
 export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
@@ -27,9 +28,16 @@ export async function HomePageContent({ locale }: { locale: Locale }) {
   const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'home');
 
+  const graph = await buildPageGraph({
+    locale,
+    path: '/',
+    type: 'WebPage',
+    aboutBusiness: true,
+  });
+
   return (
     <main>
-      <WebSiteJsonLd locale={locale} />
+      <JsonLd graph={graph} />
       <Hero
         title={homeDict.hero.title}
         subtitle={homeDict.hero.subtitle}
