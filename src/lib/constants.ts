@@ -1,4 +1,6 @@
 export const SITE_NAME = 'Domovenok';
+/** Alternative site name for the WebSite structured data (helps Google pick the site name in search results). */
+export const SITE_ALTERNATE_NAME = 'Animatori Balti';
 export const BASE_PRICE = 2500;
 
 export const NAV_HREFS = [

@@ -12,12 +12,13 @@ import { absoluteUrl } from './site-config';
 export const TITLE_TEMPLATE = `%s | ${SITE_NAME}`;
 
 /**
- * Applies the site title template to a page title.
- * Needed for pages that live in the same segment as the layout that declares
- * `title.template` (the home pages): Next.js does not apply a template to them.
+ * Title of a home page: "<site name>: <title>". Google shows home titles in this shape
+ * anyway (it moves the brand to the front), so the page title is written that way.
+ * Used with `title.absolute`: Next.js applies `title.template` to every page except
+ * those in the same segment as the layout that declares it, which includes the home pages.
  */
-export function applyTitleTemplate(title: string): string {
-  return TITLE_TEMPLATE.replace('%s', () => title);
+export function formatHomeTitle(title: string): string {
+  return `${SITE_NAME}: ${title}`;
 }
 
 /**
