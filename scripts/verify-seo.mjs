@@ -22,9 +22,13 @@
  *   A11 og:image is an absolute same-origin URL with width, height, type and alt; twitter:image equals it
  *   A12 the og:image file really exists (build: in public/, live: HTTP 200 + image content-type)
  *       and its real format and dimensions equal og:image:type / width / height
- *   A13 JSON-LD: every page has one LocalBusiness whose url is the canonical home of the page's locale;
- *       the two home pages (and only they) have one WebSite (url = canonical, name = og:site_name,
- *       alternateName set, publisher -> the LocalBusiness @id); @id values are unique per page
+ *   A13 JSON-LD graph: exactly one <script type="application/ld+json"> with a @graph holding the business
+ *       (EntertainmentBusiness, one @id for both languages, full address/geo/hours/contacts/logo), the
+ *       WebSite of the page language, the page node (@id = canonical), the BreadcrumbList (all pages but
+ *       the home pages) and the Service (service pages only)
+ *   A15 JSON-LD integrity: @id values are unique, every {"@id"} reference resolves inside the page graph,
+ *       breadcrumb positions run 1..n, start at the locale home, end at the page, URLs are in the sitemap
+ *   A16 every image referenced from the JSON-LD (logo, image, primaryImageOfPage, Service.image) exists
  *   A14 title shape: home pages start with "<site name>: ", every other page ends with " | <site name>"
  * Exit code 1 if any check fails.
  */
@@ -257,30 +261,146 @@ for (const loc of locs) {
       }
     }
 
-    // A13: JSON-LD (LocalBusiness everywhere, WebSite only on the locale home pages)
+    // A13 / A15 / A16: JSON-LD graph
     const home = localeHomes[p.lang];
     const isHome = Boolean(home) && p.canonical === home;
-    const nodes = p.jsonLd.filter((n) => !n.parseError);
-    if (p.jsonLd.some((n) => n.parseError)) fail('A13', loc, 'invalid JSON-LD');
+    const businessId = `${rootLoc}#business`;
+    const route = new URL(loc).pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
+    const asArray = (v) => (v == null ? [] : [].concat(v));
+    const nonEmpty = (v) => typeof v === 'string' && v.trim() !== '';
+    if (p.jsonLd.length !== 1) fail('A13', loc, `expected exactly 1 JSON-LD script, found ${p.jsonLd.length}`);
+    const nodes = p.jsonLd.flatMap((script) => (script.parseError ? [] : Array.isArray(script['@graph']) ? script['@graph'] : [script]));
+    if (p.jsonLd.some((script) => script.parseError)) fail('A13', loc, 'invalid JSON-LD');
     if (!home) fail('A13', loc, `no home URL for lang "${p.lang}" in the sitemap`);
-    const businesses = nodes.filter((n) => n['@type'] === 'LocalBusiness');
-    const websites = nodes.filter((n) => n['@type'] === 'WebSite');
-    if (businesses.length !== 1) fail('A13', loc, `expected 1 LocalBusiness, found ${businesses.length}`);
-    else if (home && businesses[0].url !== home) fail('A13', loc, `LocalBusiness url "${businesses[0].url}" differs from the home canonical "${home}"`);
-    if (!isHome && websites.length > 0) fail('A13', loc, 'WebSite JSON-LD is only expected on the home pages');
-    if (isHome) {
-      if (websites.length !== 1) fail('A13', loc, `expected 1 WebSite on the home page, found ${websites.length}`);
+    const byId = new Map(nodes.filter((n) => n['@id']).map((n) => [n['@id'], n]));
+    const ofType = (type) => nodes.filter((n) => asArray(n['@type']).includes(type));
+
+    // website
+    const websites = ofType('WebSite');
+    const site = websites[0];
+    if (websites.length !== 1) fail('A13', loc, `expected 1 WebSite, found ${websites.length}`);
+    else {
+      if (site['@id'] !== `${home}#website`) fail('A13', loc, `WebSite @id "${site['@id']}" is not "${home}#website"`);
+      if (site.url !== home) fail('A13', loc, `WebSite url "${site.url}" differs from the locale home "${home}"`);
+      if (!site.name || site.name !== one('og:site_name')) fail('A13', loc, `WebSite name "${site.name}" differs from og:site_name "${one('og:site_name')}"`);
+      if (!nonEmpty(site.alternateName)) fail('A13', loc, 'WebSite alternateName is missing');
+      if (site.inLanguage !== p.lang) fail('A13', loc, `WebSite inLanguage "${site.inLanguage}" differs from lang "${p.lang}"`);
+      if (site.publisher?.['@id'] !== businessId) fail('A13', loc, 'WebSite publisher does not reference the business @id');
+    }
+
+    // business
+    const businesses = ofType('EntertainmentBusiness');
+    const biz = businesses[0];
+    if (businesses.length !== 1) fail('A13', loc, `expected 1 EntertainmentBusiness, found ${businesses.length}`);
+    else {
+      const miss = (what) => fail('A13', loc, `business: ${what}`);
+      if (biz['@id'] !== businessId) miss(`@id "${biz['@id']}" is not "${businessId}"`);
+      if (biz.url !== rootLoc) miss(`url "${biz.url}" differs from the root canonical "${rootLoc}"`);
+      if (!nonEmpty(biz.name)) miss('missing name');
+      else if (site && ![site.name, ...asArray(site.alternateName)].includes(biz.name)) miss(`name "${biz.name}" is not the WebSite name or one of its alternate names`);
+      if (asArray(biz.alternateName).length === 0) miss('missing alternateName');
+      ['description', 'foundingDate', 'priceRange'].forEach((k) => { if (!nonEmpty(biz[k])) miss(`missing ${k}`); });
+      ['streetAddress', 'postalCode', 'addressLocality', 'addressCountry'].forEach((k) => { if (!nonEmpty(biz.address?.[k])) miss(`address.${k} is missing`); });
+      const decimals = (n) => String(n).split('.')[1]?.length ?? 0;
+      const { latitude, longitude } = biz.geo ?? {};
+      if (typeof latitude !== 'number' || typeof longitude !== 'number' || decimals(latitude) < 5 || decimals(longitude) < 5) miss(`geo needs numeric latitude/longitude with at least 5 decimals: ${JSON.stringify(biz.geo)}`);
+      const hours = asArray(biz.openingHoursSpecification);
+      if (hours.length === 0 || hours.some((h) => asArray(h.dayOfWeek).length === 0 || !/^\d\d:\d\d$/.test(h.opens ?? '') || !/^\d\d:\d\d$/.test(h.closes ?? ''))) miss('openingHoursSpecification is missing or malformed');
+      if (asArray(biz.telephone).length === 0) miss('missing telephone');
+      if (asArray(biz.contactPoint).length === 0 || asArray(biz.contactPoint).some((c) => !nonEmpty(c.telephone) || asArray(c.availableLanguage).length === 0)) miss('contactPoint needs telephone and availableLanguage');
+      if (!nonEmpty(biz.hasMap) || !/^https?:\/\//.test(biz.hasMap)) miss('hasMap is missing or not absolute');
+      if (asArray(biz.sameAs).length === 0 || asArray(biz.sameAs).some((u) => !/^https?:\/\//.test(u))) miss('sameAs is missing or has a non-absolute URL');
+      if (!nonEmpty(biz.logo?.url) || !(biz.logo.width > 0) || !(biz.logo.height > 0)) miss('logo needs url, width and height');
+      if (asArray(biz.image).length === 0) miss('missing image');
+      if (!biz.areaServed) miss('missing areaServed');
+    }
+
+    // page node
+    const PAGE_TYPE = { '/': 'WebPage', '/about': 'AboutPage', '/contact': 'ContactPage', '/services': 'CollectionPage', '/media': 'CollectionPage' };
+    const pageType = PAGE_TYPE[route] ?? 'WebPage';
+    const page = byId.get(p.canonical);
+    if (!page) fail('A13', loc, `no page node with @id = canonical "${p.canonical}"`);
+    else {
+      if (!asArray(page['@type']).includes(pageType)) fail('A13', loc, `page node type ${JSON.stringify(page['@type'])}, expected ${pageType}`);
+      if (page.url !== p.canonical) fail('A13', loc, `page node url "${page.url}" differs from canonical`);
+      if (page.inLanguage !== p.lang) fail('A13', loc, `page inLanguage "${page.inLanguage}" differs from lang "${p.lang}"`);
+      if (page.isPartOf?.['@id'] !== `${home}#website`) fail('A13', loc, 'page isPartOf does not reference the WebSite');
+      if (!nonEmpty(page.primaryImageOfPage?.url)) fail('A13', loc, 'page has no primaryImageOfPage.url');
+      if ((route === '/' || route === '/about') && page.about?.['@id'] !== businessId) fail('A13', loc, 'page about does not reference the business');
+    }
+
+    // breadcrumb
+    const crumbs = ofType('BreadcrumbList');
+    const expectedCrumbs = route === '/' ? 0 : route.split('/').filter(Boolean).length + 1;
+    if (route === '/' ? crumbs.length !== 0 : crumbs.length !== 1) fail('A13', loc, `expected ${route === '/' ? 'no' : 'one'} BreadcrumbList, found ${crumbs.length}`);
+    else if (crumbs.length === 1) {
+      const crumb = crumbs[0];
+      if (crumb['@id'] !== `${p.canonical}#breadcrumb`) fail('A13', loc, `BreadcrumbList @id "${crumb['@id']}"`);
+      if (page && page.breadcrumb?.['@id'] !== crumb['@id']) fail('A13', loc, 'page breadcrumb does not reference the BreadcrumbList');
+      const items = asArray(crumb.itemListElement);
+      if (items.length !== expectedCrumbs) fail('A13', loc, `BreadcrumbList has ${items.length} items, expected ${expectedCrumbs}`);
+      // A15: breadcrumb integrity
+      items.forEach((it, i) => {
+        if (it.position !== i + 1) fail('A15', loc, `breadcrumb position ${it.position} at index ${i}`);
+        if (!nonEmpty(it.name)) fail('A15', loc, `breadcrumb item ${i + 1} has no name`);
+        if (!sitemap.entries.has(it.item)) fail('A15', loc, `breadcrumb item ${i + 1} URL is not in the sitemap: ${it.item}`);
+      });
+      if (items.length > 0 && items[0].item !== home) fail('A15', loc, `first breadcrumb is "${items[0].item}", expected the locale home "${home}"`);
+      if (items.length > 0 && items.at(-1).item !== p.canonical) fail('A15', loc, `last breadcrumb is "${items.at(-1).item}", expected the page "${p.canonical}"`);
+    }
+
+    // service (service detail pages only)
+    const services = ofType('Service');
+    const isServicePage = /^\/services\/[^/]+$/.test(route);
+    if (!isServicePage && services.length > 0) fail('A13', loc, 'Service node outside the service pages');
+    if (isServicePage) {
+      if (services.length !== 1) fail('A13', loc, `expected 1 Service, found ${services.length}`);
       else {
-        const site = websites[0];
-        if (site.url !== p.canonical) fail('A13', loc, `WebSite url "${site.url}" differs from the canonical "${p.canonical}"`);
-        if (!site.name || site.name !== one('og:site_name')) fail('A13', loc, `WebSite name "${site.name}" differs from og:site_name "${one('og:site_name')}"`);
-        if (typeof site.alternateName !== 'string' || !site.alternateName.trim()) fail('A13', loc, 'WebSite alternateName is missing');
-        if (!site['@id']) fail('A13', loc, 'WebSite has no @id');
-        if (businesses.length === 1 && site.publisher?.['@id'] !== businesses[0]['@id']) fail('A13', loc, 'WebSite publisher does not reference the LocalBusiness @id');
+        const svc = services[0];
+        const miss = (what) => fail('A13', loc, `Service: ${what}`);
+        if (svc['@id'] !== `${p.canonical}#service`) miss(`@id "${svc['@id']}"`);
+        if (page && page.mainEntity?.['@id'] !== svc['@id']) miss('page mainEntity does not reference it');
+        if (svc.provider?.['@id'] !== businessId) miss('provider does not reference the business');
+        if (!nonEmpty(svc.name) || !nonEmpty(svc.description)) miss('missing name or description');
+        if (!svc.areaServed) miss('missing areaServed');
+        if (!nonEmpty(svc.image)) miss('missing image');
+        const { price, priceCurrency } = svc.offers ?? {};
+        if (!(typeof price === 'number' && price > 0) || priceCurrency !== 'MDL') miss(`offers need a numeric price and priceCurrency MDL: ${JSON.stringify(svc.offers)}`);
+        const { suggestedMinAge: lo, suggestedMaxAge: hi } = svc.audience ?? {};
+        if (!Number.isInteger(lo) || !Number.isInteger(hi) || lo > hi) miss(`audience needs integer suggestedMinAge <= suggestedMaxAge: ${JSON.stringify(svc.audience)}`);
       }
     }
-    const ids = nodes.map((n) => n['@id']).filter(Boolean);
-    if (new Set(ids).size !== ids.length) fail('A13', loc, `duplicate JSON-LD @id: ${ids.join(', ')}`);
+
+    // A15: ids and references
+    const idList = nodes.map((n) => n['@id']).filter(Boolean);
+    if (new Set(idList).size !== idList.length) fail('A15', loc, `duplicate @id: ${idList.join(', ')}`);
+    const walk = (value) => {
+      if (Array.isArray(value)) value.forEach(walk);
+      else if (value && typeof value === 'object') {
+        const keys = Object.keys(value);
+        if (keys.length === 1 && keys[0] === '@id' && !byId.has(value['@id'])) fail('A15', loc, `unresolved reference to ${value['@id']}`);
+        Object.entries(value).forEach(([k, v]) => { if (!(keys.length === 1 && k === '@id')) walk(v); });
+      }
+    };
+    nodes.forEach((n) => Object.entries(n).forEach(([k, v]) => { if (k !== '@id') walk(v); }));
+
+    // A16: images referenced from the JSON-LD
+    const imageRefs = [
+      ['logo', biz?.logo?.url, biz?.logo],
+      ...asArray(biz?.image).map((i) => ['business image', typeof i === 'string' ? i : i?.url, null]),
+      ['primaryImageOfPage', page?.primaryImageOfPage?.url, page?.primaryImageOfPage],
+      ['Service image', services[0]?.image, null],
+    ].filter(([, url]) => nonEmpty(url));
+    for (const [label, url, declared] of imageRefs) {
+      if (!/^https?:\/\//.test(url)) { fail('A16', loc, `${label} is not absolute: ${url}`); continue; }
+      const file = await loadImage(url);
+      if (file.status !== 200) fail('A16', loc, `${label} is not available (HTTP ${file.status}): ${url}`);
+      else {
+        if (!file.type) fail('A16', loc, `${label} is not a JPEG/PNG file: ${url}`);
+        if (label === 'logo' && (file.width < 112 || file.height < 112)) fail('A16', loc, `logo is ${file.width}x${file.height}, Google needs at least 112x112`);
+        if (declared?.width && (declared.width !== file.width || declared.height !== file.height)) fail('A16', loc, `${label} declares ${declared.width}x${declared.height} but the file is ${file.width}x${file.height}`);
+      }
+    }
 
     // A14: title shape
     const siteName = one('og:site_name');
@@ -313,7 +433,7 @@ else {
 const checked = locs.length;
 console.log(`verify-seo (${liveOrigin ? `live ${liveOrigin}` : `build ${buildDir}`}): ${checked} sitemap URLs checked`);
 if (failures.length === 0) {
-  console.log('OK: all checks passed (A1-A14)');
+  console.log('OK: all checks passed (A1-A16)');
 } else {
   const byId = failures.reduce((acc, f) => ({ ...acc, [f.id]: (acc[f.id] ?? 0) + 1 }), {});
   console.log(`FAILED: ${failures.length} problem(s) -> ${Object.entries(byId).map(([k, v]) => `${k}: ${v}`).join(', ')}`);
