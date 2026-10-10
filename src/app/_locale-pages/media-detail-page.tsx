@@ -11,7 +11,8 @@ import SeoBlock from '@/components/seo/SeoBlock';
 import eventsData from '@/data/events.json';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getLocaleHref } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getMediaSeo } from '@/lib/seo';
 import type { Event, Service } from '@/lib/types';
 
@@ -26,7 +27,7 @@ export async function generateMediaDetailMetadata(
   return {
     title: seo.meta.title,
     description: seo.meta.description,
-    alternates: generateAlternates(locale, `/media/${slug}`),
+    ...buildLocalizedMetadata(locale, `/media/${slug}`),
   };
 }
 

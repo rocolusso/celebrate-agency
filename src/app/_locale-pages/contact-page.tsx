@@ -5,7 +5,7 @@ import ContactForm from '@/components/forms/ContactForm';
 import SeoBlock from '@/components/seo/SeoBlock';
 import contactData from '@/data/contact.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 
 export async function generateContactMetadata(locale: Locale): Promise<Metadata> {
@@ -13,7 +13,7 @@ export async function generateContactMetadata(locale: Locale): Promise<Metadata>
   return {
     title: dict.meta.title,
     description: dict.meta.description,
-    alternates: generateAlternates(locale, '/contact'),
+    ...buildLocalizedMetadata(locale, '/contact'),
   };
 }
 

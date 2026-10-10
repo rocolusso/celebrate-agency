@@ -5,7 +5,7 @@ import EventCard from '@/components/cards/EventCard';
 import SeoBlock from '@/components/seo/SeoBlock';
 import eventsData from '@/data/events.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 import type { Event } from '@/lib/types';
 
@@ -14,7 +14,7 @@ export async function generateMediaListMetadata(locale: Locale): Promise<Metadat
   return {
     title: dict.page.meta.title,
     description: dict.page.meta.description,
-    alternates: generateAlternates(locale, '/media'),
+    ...buildLocalizedMetadata(locale, '/media'),
   };
 }
 

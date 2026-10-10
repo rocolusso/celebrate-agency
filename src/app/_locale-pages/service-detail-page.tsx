@@ -12,7 +12,8 @@ import SeoBlock from '@/components/seo/SeoBlock';
 import servicesData from '@/data/services.json';
 import { formatPrice } from '@/lib/utils';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getLocaleHref } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getServiceSeo } from '@/lib/seo';
 import type { Service } from '@/lib/types';
 
@@ -27,7 +28,7 @@ export async function generateServiceDetailMetadata(
   return {
     title: seo.meta.title,
     description: seo.meta.description,
-    alternates: generateAlternates(locale, `/services/${slug}`),
+    ...buildLocalizedMetadata(locale, `/services/${slug}`),
   };
 }
 

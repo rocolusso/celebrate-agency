@@ -5,7 +5,7 @@ import ServicesGrid from '@/components/sections/ServicesGrid';
 import SeoBlock from '@/components/seo/SeoBlock';
 import servicesData from '@/data/services.json';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 
 export async function generateServicesListMetadata(locale: Locale): Promise<Metadata> {
@@ -13,7 +13,7 @@ export async function generateServicesListMetadata(locale: Locale): Promise<Meta
   return {
     title: dict.page.meta.title,
     description: dict.page.meta.description,
-    alternates: generateAlternates(locale, '/services'),
+    ...buildLocalizedMetadata(locale, '/services'),
   };
 }
 

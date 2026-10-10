@@ -4,7 +4,8 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import SeoBlock from '@/components/seo/SeoBlock';
 import { getDictionary, type Locale } from '@/lib/i18n';
-import { generateAlternates, getLocaleHref } from '@/lib/i18n-utils';
+import { getLocaleHref } from '@/lib/i18n-utils';
+import { buildLocalizedMetadata } from '@/lib/site-metadata';
 import { getPageSeo } from '@/lib/seo';
 import { BASE_PRICE } from '@/lib/constants';
 
@@ -13,7 +14,7 @@ export async function generateAboutMetadata(locale: Locale): Promise<Metadata> {
   return {
     title: dict.meta.title,
     description: dict.meta.description,
-    alternates: generateAlternates(locale, '/about'),
+    ...buildLocalizedMetadata(locale, '/about'),
   };
 }
 
