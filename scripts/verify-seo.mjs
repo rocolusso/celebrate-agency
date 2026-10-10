@@ -22,6 +22,10 @@
  *   A11 og:image is an absolute same-origin URL with width, height, type and alt; twitter:image equals it
  *   A12 the og:image file really exists (build: in public/, live: HTTP 200 + image content-type)
  *       and its real format and dimensions equal og:image:type / width / height
+ *   A13 JSON-LD: every page has one LocalBusiness whose url is the canonical home of the page's locale;
+ *       the two home pages (and only they) have one WebSite (url = canonical, name = og:site_name,
+ *       alternateName set, publisher -> the LocalBusiness @id); @id values are unique per page
+ *   A14 title shape: home pages start with "<site name>: ", every other page ends with " | <site name>"
  * Exit code 1 if any check fails.
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -108,8 +112,17 @@ function analyze(html) {
     const key = attr(m[0], 'property') ?? attr(m[0], 'name');
     if (key && /^(og|twitter):/i.test(key)) (meta[key] ??= []).push(attr(m[0], 'content') ?? '');
   }
+  const jsonLd = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => {
+    try {
+      return JSON.parse(m[1]);
+    } catch {
+      return { parseError: true };
+    }
+  });
   return {
     meta,
+    jsonLd,
+    title: (html.match(/<title>([^<]*)<\/title>/i) || [])[1] ?? null,
     htmlCount: (html.match(/<html[\s>]/gi) || []).length,
     bodyCount: (html.match(/<body[\s>]/gi) || []).length,
     lang: attr(htmlTag, 'lang'),
@@ -158,6 +171,9 @@ const fail = (id, where, message) => failures.push({ id, where, message });
 
 const sitemap = parseSitemap(await loadSitemap());
 const locs = [...sitemap.entries.keys()];
+// The sitemap entry of the root lists the home page of every locale (hreflang value = <html lang>).
+const rootLoc = locs.find((l) => new URL(l).pathname === '/');
+const localeHomes = rootLoc ? sitemap.entries.get(rootLoc) : {};
 const origins = new Set(locs.map((l) => new URL(l).origin));
 
 sitemap.duplicates.forEach((d) => fail('A6', d, 'duplicate URL in sitemap'));
@@ -241,6 +257,37 @@ for (const loc of locs) {
       }
     }
 
+    // A13: JSON-LD (LocalBusiness everywhere, WebSite only on the locale home pages)
+    const home = localeHomes[p.lang];
+    const isHome = Boolean(home) && p.canonical === home;
+    const nodes = p.jsonLd.filter((n) => !n.parseError);
+    if (p.jsonLd.some((n) => n.parseError)) fail('A13', loc, 'invalid JSON-LD');
+    if (!home) fail('A13', loc, `no home URL for lang "${p.lang}" in the sitemap`);
+    const businesses = nodes.filter((n) => n['@type'] === 'LocalBusiness');
+    const websites = nodes.filter((n) => n['@type'] === 'WebSite');
+    if (businesses.length !== 1) fail('A13', loc, `expected 1 LocalBusiness, found ${businesses.length}`);
+    else if (home && businesses[0].url !== home) fail('A13', loc, `LocalBusiness url "${businesses[0].url}" differs from the home canonical "${home}"`);
+    if (!isHome && websites.length > 0) fail('A13', loc, 'WebSite JSON-LD is only expected on the home pages');
+    if (isHome) {
+      if (websites.length !== 1) fail('A13', loc, `expected 1 WebSite on the home page, found ${websites.length}`);
+      else {
+        const site = websites[0];
+        if (site.url !== p.canonical) fail('A13', loc, `WebSite url "${site.url}" differs from the canonical "${p.canonical}"`);
+        if (!site.name || site.name !== one('og:site_name')) fail('A13', loc, `WebSite name "${site.name}" differs from og:site_name "${one('og:site_name')}"`);
+        if (typeof site.alternateName !== 'string' || !site.alternateName.trim()) fail('A13', loc, 'WebSite alternateName is missing');
+        if (!site['@id']) fail('A13', loc, 'WebSite has no @id');
+        if (businesses.length === 1 && site.publisher?.['@id'] !== businesses[0]['@id']) fail('A13', loc, 'WebSite publisher does not reference the LocalBusiness @id');
+      }
+    }
+    const ids = nodes.map((n) => n['@id']).filter(Boolean);
+    if (new Set(ids).size !== ids.length) fail('A13', loc, `duplicate JSON-LD @id: ${ids.join(', ')}`);
+
+    // A14: title shape
+    const siteName = one('og:site_name');
+    if (!p.title || !siteName) fail('A14', loc, 'missing <title> or og:site_name');
+    else if (isHome && !p.title.startsWith(`${siteName}: `)) fail('A14', loc, `home title must start with "${siteName}: ": ${p.title}`);
+    else if (!isHome && !p.title.endsWith(` | ${siteName}`)) fail('A14', loc, `title must end with " | ${siteName}": ${p.title}`);
+
     // A5: /index links
     p.indexLinks.forEach((href) => fail('A5', loc, `link to an /index path: ${href}`));
 
@@ -266,7 +313,7 @@ else {
 const checked = locs.length;
 console.log(`verify-seo (${liveOrigin ? `live ${liveOrigin}` : `build ${buildDir}`}): ${checked} sitemap URLs checked`);
 if (failures.length === 0) {
-  console.log('OK: all checks passed (A1-A12)');
+  console.log('OK: all checks passed (A1-A14)');
 } else {
   const byId = failures.reduce((acc, f) => ({ ...acc, [f.id]: (acc[f.id] ?? 0) + 1 }), {});
   console.log(`FAILED: ${failures.length} problem(s) -> ${Object.entries(byId).map(([k, v]) => `${k}: ${v}`).join(', ')}`);
