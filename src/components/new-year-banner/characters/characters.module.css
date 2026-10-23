@@ -1,0 +1,97 @@
+.svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  overflow: visible;
+}
+
+.bob {
+  animation: bob 2.6s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 50% 100%;
+}
+
+.wave {
+  transform-box: view-box;
+  animation: wave 1.3s ease-in-out infinite;
+}
+
+.sway {
+  transform-box: view-box;
+  animation: sway 3.2s ease-in-out infinite;
+}
+
+.blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4.6s infinite;
+}
+
+.twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-4px) scaleY(1.008);
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(13deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.7) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(20deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bob,
+  .wave,
+  .sway,
+  .blink,
+  .twinkle {
+    animation: none;
+  }
+}

@@ -12,6 +12,7 @@ import { getDictionary, type Locale } from '@/lib/i18n';
 import { getPageSeo } from '@/lib/seo';
 import { buildPageGraph } from '@/lib/schema-graph';
 import { buildLocalizedMetadata, formatHomeTitle } from '@/lib/site-metadata';
+import PromoHtmlBanner from "@/components/promo-html-banner/PromoHtmlBanner";
 
 export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
   const dict = await getDictionary(locale, 'home');
@@ -45,6 +46,7 @@ export async function HomePageContent({ locale }: { locale: Locale }) {
         ctaHref="#contact"
         backgroundImage="/images/hero/hero-bg.jpg"
       />
+      <PromoHtmlBanner locale={locale} />
       <About dict={homeDict.about} />
       <ServicesGrid
         services={servicesData}

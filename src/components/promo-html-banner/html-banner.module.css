@@ -1,0 +1,823 @@
+/* HTML-версия баннера. Все размеры считаются от ширины баннера: --u = 1 пиксель исходного макета.
+   Десктоп: макет 1280 px, мобайл: макет 1066 px. */
+
+.wrap {
+  width: 100%;
+  background: #0b1a3d;
+}
+
+.root {
+  --red: linear-gradient(180deg, #ff5a52 0%, #e3232c 45%, #b5101e 100%);
+  --gold: linear-gradient(180deg, #fff6c4 0%, #ffd84a 38%, #f0a30a 70%, #c97800 100%);
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  aspect-ratio: 1280 / 720;
+  overflow: hidden;
+  container-type: inline-size;
+  isolation: isolate;
+  background: #0b1a3d;
+  color: inherit;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.root:focus-visible {
+  outline: 4px solid #ffd45c;
+  outline-offset: -4px;
+}
+
+.desk,
+.mob,
+.mobText {
+  position: absolute;
+  inset: 0;
+}
+
+.desk {
+  --u: calc(100cqw / 1280);
+  overflow: hidden;
+}
+
+.mob,
+.mobText {
+  --u: calc(100cqw / 1066);
+  display: none;
+}
+
+.mob {
+  overflow: hidden;
+}
+
+.mobText {
+  z-index: 3;
+}
+
+@media (max-width: 767px) {
+  .root {
+    aspect-ratio: 1066 / 1530;
+  }
+  .desk,
+  .vig {
+    display: none;
+  }
+  .mob,
+  .mobText {
+    display: block;
+  }
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ───────── ДЕСКТОП: «камера» ───────── */
+
+.camX,
+.camY,
+.cam {
+  position: absolute;
+  inset: 0;
+}
+
+.camX {
+  animation: camX 4s ease-in-out infinite alternate;
+}
+.camY {
+  animation: camY 2s ease-in-out infinite alternate;
+}
+.cam {
+  transform-origin: 50% 55%;
+  animation: camS 4s ease-in-out infinite alternate;
+}
+
+@keyframes camX {
+  from { translate: calc(-4 * var(--u)) 0; }
+  to { translate: calc(4 * var(--u)) 0; }
+}
+@keyframes camY {
+  from { translate: 0 calc(-3 * var(--u)); }
+  to { translate: 0 calc(3 * var(--u)); }
+}
+@keyframes camS {
+  from { scale: 1.01; }
+  to { scale: 1.022; }
+}
+
+.deskBg,
+.mobBg,
+.mobFg {
+  position: absolute;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.deskBg,
+.mobBg {
+  inset: 0;
+}
+
+.mobFg {
+  left: 0;
+  right: 0;
+  top: 16.34%;
+  height: 83.66%;
+}
+
+@media (min-width: 768px) {
+  .ru .deskBg { background-image: url("/banners-html/desktop-ru.webp"); }
+  .ro .deskBg { background-image: url("/banners-html/desktop-ro.webp"); }
+}
+
+@media (max-width: 767px) {
+  .mobBg { background-image: url("/banners-html/mobile-bg.webp"); }
+  .mobFg { background-image: url("/banners-html/mobile-fg.webp"); }
+}
+
+/* ───────── блик по золоту ───────── */
+
+.gold {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.gold::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 32cqw;
+  transform: skewX(-22deg);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 244, 200, 0.95), rgba(255, 255, 255, 0));
+  animation: goldSweep 4s ease-in-out infinite;
+}
+
+@keyframes goldSweep {
+  0% { translate: -40cqw 0; visibility: visible; }
+  55% { translate: 140cqw 0; visibility: visible; }
+  56%, 100% { translate: 140cqw 0; visibility: hidden; }
+}
+
+.goldDesk {
+  inset: 0;
+}
+
+.goldMobBg,
+.goldMobFg {
+  left: 0;
+  right: 0;
+  top: 16.34%;
+  height: 83.66%;
+}
+
+.goldMobBg::before,
+.goldMobFg::before {
+  animation-duration: 5s;
+}
+
+@media (min-width: 768px) {
+  .ru .goldDesk {
+    -webkit-mask-image: url("/banners-html/gold-desktop-ru.webp");
+    mask-image: url("/banners-html/gold-desktop-ru.webp");
+  }
+  .ro .goldDesk {
+    -webkit-mask-image: url("/banners-html/gold-desktop-ro.webp");
+    mask-image: url("/banners-html/gold-desktop-ro.webp");
+  }
+}
+
+@media (max-width: 767px) {
+  .goldMobBg {
+    -webkit-mask-image: url("/banners-html/gold-mobile-bg.webp");
+    mask-image: url("/banners-html/gold-mobile-bg.webp");
+  }
+  .goldMobFg {
+    -webkit-mask-image: url("/banners-html/gold-mobile-fg.webp");
+    mask-image: url("/banners-html/gold-mobile-fg.webp");
+  }
+}
+
+/* ───────── огни и блёстки ───────── */
+
+.glow {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--n) * var(--u));
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.16;
+  animation: glowP var(--dur) ease-in-out infinite;
+  animation-delay: var(--dl);
+}
+
+.glow.warm {
+  background: radial-gradient(circle, rgba(255, 206, 120, 0.95) 0%, rgba(255, 170, 60, 0.28) 38%, rgba(255, 255, 255, 0) 70%);
+}
+.glow.cool {
+  background: radial-gradient(circle, rgba(150, 200, 255, 0.95) 0%, rgba(110, 160, 255, 0.25) 38%, rgba(255, 255, 255, 0) 70%);
+}
+
+@keyframes glowP {
+  0%, 100% { opacity: 0.16; scale: 0.85; }
+  50% { opacity: 0.66; scale: 1.1; }
+}
+
+.glint {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--n) * var(--u));
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: tw var(--dur) linear infinite;
+  animation-delay: var(--dl);
+}
+
+.glint::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c) 0%, rgba(255, 255, 255, 0) 66%);
+}
+
+.glint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--star);
+  clip-path: polygon(50% 0, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0 50%, 43% 43%);
+}
+
+.glint.warm { --c: rgba(255, 226, 150, 0.85); --star: #fff6d6; }
+.glint.cool { --c: rgba(210, 236, 255, 0.85); --star: #f2faff; }
+
+@keyframes tw {
+  0%, 52% { opacity: 0; scale: 0.3; rotate: 0deg; }
+  78% { opacity: 1; scale: 1; rotate: 35deg; }
+  100% { opacity: 0; scale: 0.35; rotate: 80deg; }
+}
+
+/* ───────── десктоп: кнопка и значки ───────── */
+
+.ctaGlow,
+.ctaShine {
+  position: absolute;
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+  border-radius: calc(var(--r) * var(--u));
+  pointer-events: none;
+}
+
+.ctaGlow {
+  box-shadow: 0 0 calc(40 * var(--u)) calc(8 * var(--u)) rgba(255, 196, 70, 0.75);
+  animation: ctaGlow 3.33s ease-in-out infinite;
+}
+
+@keyframes ctaGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+}
+
+.ctaShine {
+  overflow: hidden;
+  opacity: 0.45;
+}
+
+.ctaShine::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: 0;
+  width: 35%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff, rgba(255, 255, 255, 0));
+  animation: ctaShine 4s ease-in-out infinite 0.8s;
+}
+
+@keyframes ctaShine {
+  0% { translate: -120% 0; }
+  40%, 100% { translate: 300% 0; }
+}
+
+.ring {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(100 * var(--u));
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 230, 160, 0) 52%, rgba(255, 214, 120, 0.9) 70%, rgba(255, 200, 90, 0) 100%);
+  opacity: 0.05;
+  animation: ringP 4s ease-in-out infinite;
+  animation-delay: var(--dl);
+}
+
+@keyframes ringP {
+  0%, 100% { opacity: 0.05; scale: 0.9; }
+  50% { opacity: 0.45; scale: 1.1; }
+}
+
+/* ───────── мобайл: параллакс ───────── */
+
+.bgX,
+.bgY,
+.fgX,
+.fgY,
+.bgL,
+.fgL {
+  position: absolute;
+  inset: 0;
+}
+
+.bgX { animation: bgX 5s ease-in-out infinite alternate; }
+.bgY { animation: bgY 2.5s ease-in-out infinite alternate; }
+.bgL { scale: 1.05; }
+.fgX { animation: fgX 5s ease-in-out infinite alternate; }
+.fgY { animation: fgY 2.5s ease-in-out infinite alternate; }
+.fgL {
+  transform-origin: 50% 100%;
+  animation: fgS 5s ease-in-out infinite alternate;
+}
+
+@keyframes bgX { from { translate: calc(-6 * var(--u)) 0; } to { translate: calc(6 * var(--u)) 0; } }
+@keyframes bgY { from { translate: 0 calc(-4 * var(--u)); } to { translate: 0 calc(4 * var(--u)); } }
+@keyframes fgX { from { translate: calc(8 * var(--u)) 0; } to { translate: calc(-8 * var(--u)) 0; } }
+@keyframes fgY { from { translate: 0 calc(3 * var(--u)); } to { translate: 0 calc(-3 * var(--u)); } }
+@keyframes fgS { from { scale: 1.018; } to { scale: 1.03; } }
+
+/* ───────── общие слои: боке, снег, виньетка ───────── */
+
+.bokeh {
+  --travel: 62cqw;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .bokeh { --travel: 155cqw; }
+}
+
+.bk {
+  position: absolute;
+  left: var(--x);
+  top: 100%;
+  width: calc(var(--n) * 0.09cqw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(1.5px);
+  opacity: 0;
+  animation: bkRise var(--dur) linear infinite, bkTw 3s ease-in-out infinite alternate;
+  animation-delay: var(--dl), var(--dl);
+}
+
+.bk.warm { background: radial-gradient(circle, rgba(255, 220, 140, 0.95) 0%, rgba(255, 190, 90, 0.45) 55%, rgba(255, 255, 255, 0) 72%); }
+.bk.cool { background: radial-gradient(circle, rgba(190, 225, 255, 0.95) 0%, rgba(150, 200, 255, 0.4) 55%, rgba(255, 255, 255, 0) 72%); }
+
+@keyframes bkRise {
+  0% { translate: 0 0; opacity: 0; }
+  10%, 90% { opacity: 0.4; }
+  100% { translate: 2cqw calc(-1 * var(--travel) - 6cqw); opacity: 0; }
+}
+@keyframes bkTw {
+  from { scale: 0.8; }
+  to { scale: 1.15; }
+}
+
+.snow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vig {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 62%, rgba(5, 12, 40, 0.28) 100%);
+}
+
+/* ───────── мобайл: текст ───────── */
+
+.tag {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(20 * var(--u));
+  margin: 0 auto;
+  width: fit-content;
+  font-family: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: calc(27 * var(--u));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  padding: calc(9 * var(--u)) calc(30 * var(--u));
+  border-radius: 999px;
+  background: rgba(12, 28, 80, 0.62);
+  border: calc(2 * var(--u)) solid rgba(255, 214, 110, 0.9);
+  box-shadow: 0 0 calc(24 * var(--u)) rgba(255, 200, 90, 0.35);
+  animation: tagIn 0.6s ease 0.4s both;
+}
+
+@keyframes tagIn {
+  from { opacity: 0; translate: 0 calc(-24 * var(--u)); }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(88 * var(--u));
+  margin: 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  font-size: var(--fs);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.sp {
+  display: inline-block;
+  width: 0.38em;
+}
+
+.l1ru { --fs: calc(94 * var(--u)); --fill: var(--red); --stroke: #fff; --sw: calc(18 * var(--u)); --ex: #8d0e18; --e1: calc(12 * var(--u)); --e2: calc(7 * var(--u)); --sd: 1.5s; }
+.l2ru { --fs: calc(124 * var(--u)); --fill: var(--gold); --stroke: #b01624; --sw: calc(20 * var(--u)); --ex: #6e0a14; --e1: calc(14 * var(--u)); --e2: calc(8 * var(--u)); --sd: 2.1s; margin-top: calc(6 * var(--u)); }
+.l1ro { --fs: calc(84 * var(--u)); --fill: var(--gold); --stroke: #7a2f0d; --sw: calc(16 * var(--u)); --ex: #4a1a06; --e1: calc(12 * var(--u)); --e2: calc(7 * var(--u)); --sd: 1.5s; }
+.l2ro { --fs: calc(84 * var(--u)); --fill: var(--red); --stroke: #fff; --sw: calc(17 * var(--u)); --ex: #8d0e18; --e1: calc(12 * var(--u)); --e2: calc(7 * var(--u)); --sd: 2.1s; margin-top: calc(8 * var(--u)); }
+
+.ch {
+  position: relative;
+  display: inline-block;
+  font-family: "Unbounded Variable", "Unbounded", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.015em;
+  color: var(--stroke);
+  -webkit-text-stroke: var(--sw) var(--stroke);
+  text-shadow: 0 var(--e1) 0 var(--ex), 0 var(--e2) 0 var(--ex);
+  animation: chIn 0.7s cubic-bezier(0.2, 1.5, 0.45, 1) both, chWave 5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 60ms + var(--d, 0ms) + 150ms), calc(var(--i) * -300ms);
+}
+
+.ch::after {
+  content: attr(data-c);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0) 60%), var(--fill);
+  background-size: 250% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 150% 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: chSweep 7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 70ms + var(--sd, 1.5s));
+}
+
+@keyframes chIn {
+  from { opacity: 0; translate: 0 calc(-70 * var(--u)); scale: 0.5; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+@keyframes chWave {
+  0%, 100% { transform: translateY(calc(5 * var(--u))); }
+  50% { transform: translateY(calc(-5 * var(--u))); }
+}
+@keyframes chSweep {
+  0% { background-position: 150% 0, 0 0; }
+  25%, 100% { background-position: -50% 0, 0 0; }
+}
+
+.ribbonWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--rt) * var(--u));
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 calc(6 * var(--u)) calc(10 * var(--u)) rgba(30, 10, 0, 0.45));
+}
+
+.ru .ribbonWrap { --rt: 312; --rp: 92; --rh: 78; --rf: 46; }
+.ro .ribbonWrap { --rt: 270; --rp: 100; --rh: 112; --rf: 38; }
+
+.ribbon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 calc(var(--rp) * var(--u));
+  height: calc(var(--rh) * var(--u));
+  background: linear-gradient(180deg, #fffbe8 0%, #ffeaa6 55%, #f4c658 100%);
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+  animation: ribbonIn 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) 0.75s both;
+}
+
+.ribbonLine {
+  position: absolute;
+  inset: calc(5 * var(--u));
+  border: calc(3 * var(--u)) solid #d99a1d;
+  opacity: 0.8;
+  clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+}
+
+.ribbonText {
+  position: relative;
+  font-family: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--rf) * var(--u));
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #17337a;
+}
+
+.ribbonText > span {
+  display: block;
+}
+
+@keyframes ribbonIn {
+  from { opacity: 0; scale: 0 1; }
+  to { opacity: 1; scale: 1 1; }
+}
+
+.badges {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(166 * var(--u));
+  height: calc(112 * var(--u));
+}
+
+.badge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  animation: badge 11s infinite both;
+  animation-delay: calc(var(--k) * 2.2s + 1.6s);
+}
+
+.badgeIn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(96 * var(--u));
+  padding-left: calc(78 * var(--u));
+}
+
+.badgePanel {
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(92 * var(--u));
+  min-width: calc(560 * var(--u));
+  padding: 0 calc(44 * var(--u)) 0 calc(70 * var(--u));
+  border-radius: calc(24 * var(--u));
+  background: var(--red);
+  border: calc(4 * var(--u)) solid #ffd45c;
+  box-shadow: 0 calc(10 * var(--u)) calc(24 * var(--u)) rgba(40, 0, 0, 0.45), inset 0 calc(3 * var(--u)) 0 rgba(255, 255, 255, 0.35);
+  font-family: "Manrope Variable", "Manrope", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: calc(38 * var(--u));
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 calc(2 * var(--u)) 0 rgba(120, 0, 10, 0.6);
+}
+
+.badgeIcon {
+  box-sizing: content-box;
+  position: absolute;
+  left: calc(30 * var(--u));
+  top: calc(-8 * var(--u));
+  width: calc(112 * var(--u));
+  height: calc(112 * var(--u));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d6232c;
+  background: radial-gradient(circle at 35% 30%, #fffdf0 0%, #fff2c2 50%, #ffe083 100%);
+  border: calc(6 * var(--u)) solid #f2b21c;
+  box-shadow: 0 calc(6 * var(--u)) calc(14 * var(--u)) rgba(40, 10, 0, 0.45), 0 0 calc(26 * var(--u)) rgba(255, 210, 100, 0.6);
+}
+
+.badgeIcon svg {
+  width: calc(58 * var(--u));
+  height: calc(58 * var(--u));
+}
+
+@keyframes badge {
+  0% { opacity: 0; translate: 0 calc(46 * var(--u)); scale: 0.92; }
+  4% { opacity: 1; translate: 0 0; scale: 1; }
+  17% { opacity: 1; translate: 0 0; scale: 1; }
+  20%, 100% { opacity: 0; translate: 0 calc(-24 * var(--u)); scale: 1; }
+}
+
+.cta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(38 * var(--u));
+  display: flex;
+  justify-content: center;
+  animation: ctaIn 0.8s cubic-bezier(0.2, 1.6, 0.4, 1) 1.2s both;
+}
+
+.ru .cta { --cf: 36; }
+.ro .cta { --cf: 30; }
+
+@keyframes ctaIn {
+  from { opacity: 0; translate: 0 calc(60 * var(--u)); scale: 0.7; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+.ctaWrap {
+  position: relative;
+  width: calc(880 * var(--u));
+  height: calc(122 * var(--u));
+  animation: ctaPulse 3.33s ease-in-out infinite 2s;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+
+.ctaHalo {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(34 * var(--u));
+  box-shadow: 0 0 calc(46 * var(--u)) calc(8 * var(--u)) rgba(255, 200, 70, 0.8);
+  opacity: 0.35;
+  animation: ctaHalo 3.33s ease-in-out infinite 2s;
+}
+
+@keyframes ctaHalo {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+}
+
+.ctaBox {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(26 * var(--u));
+  border-radius: calc(34 * var(--u));
+  background: var(--red);
+  border: calc(5 * var(--u)) solid #ffd45c;
+  box-shadow: 0 calc(10 * var(--u)) calc(26 * var(--u)) rgba(40, 0, 0, 0.5), inset 0 calc(4 * var(--u)) 0 rgba(255, 255, 255, 0.35);
+}
+
+.ctaText {
+  text-align: center;
+  font-family: "Unbounded Variable", "Unbounded", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--cf) * var(--u));
+  line-height: 1.12;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 calc(3 * var(--u)) 0 rgba(110, 0, 10, 0.6);
+}
+
+.ctaText > span {
+  display: block;
+}
+
+.ctaGold {
+  color: #ffe27a;
+}
+
+.ctaArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(62 * var(--u));
+  height: calc(62 * var(--u));
+  border-radius: 50%;
+  background: var(--gold);
+  color: #a31620;
+  box-shadow: 0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.4);
+  animation: arrowNudge 3.33s ease-in-out infinite 2s;
+}
+
+.ctaArrow svg {
+  width: calc(34 * var(--u));
+  height: calc(34 * var(--u));
+}
+
+@keyframes arrowNudge {
+  0%, 100% { translate: 0 0; }
+  50% { translate: calc(7 * var(--u)) 0; }
+}
+
+.ctaSweep {
+  position: absolute;
+  top: calc(-10 * var(--u));
+  bottom: calc(-10 * var(--u));
+  left: 0;
+  width: calc(150 * var(--u));
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  animation: ctaSweep 3.33s ease-in-out infinite 2s;
+}
+
+@keyframes ctaSweep {
+  0% { translate: calc(-200 * var(--u)) 0; }
+  35%, 100% { translate: calc(1050 * var(--u)) 0; }
+}
+
+/* ───────── пауза и «уменьшить движение» ───────── */
+
+.root[data-paused="true"],
+.root[data-paused="true"] *,
+.root[data-paused="true"] *::before,
+.root[data-paused="true"] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root *,
+  .root *::before,
+  .root *::after {
+    animation: none !important;
+  }
+  .badge:first-child {
+    opacity: 1;
+  }
+  .glint,
+  .bokeh {
+    display: none;
+  }
+}
+
+/* Лёгкий режим включается скриптом на слабых устройствах */
+.root[data-lite="true"] .gold,
+.root[data-lite="true"] .bokeh,
+.root[data-lite="true"] .ring,
+.root[data-lite="true"] .ctaShine,
+.root[data-lite="true"] .vig {
+  display: none;
+}
+
+.root[data-lite="true"] .glint:nth-child(even) {
+  display: none;
+}
+
+.root[data-lite="true"] .camX,
+.root[data-lite="true"] .camY,
+.root[data-lite="true"] .cam {
+  animation: none;
+}
+
+.root[data-lite="true"] .glow,
+.root[data-lite="true"] .ctaGlow {
+  display: none;
+}
