@@ -125,8 +125,10 @@ function buildServiceNode(locale: Locale, service: Service, canonical: string): 
   const ageRange = service.ageRange[locale];
   const ages = ageRange.match(/(\d+)\s*[-–]\s*(\d+)/);
   if (!ages) throw new Error(`Cannot read the age range "${ageRange}" of service ${service.slug}`);
-  if (typeof service.price !== 'number') throw new Error(`Service ${service.slug} needs a numeric price`);
-  return {
+  if (!service.hideOffer && typeof service.price !== 'number') {
+    throw new Error(`Service ${service.slug} needs a numeric price`);
+  }
+  const node: JsonLdNode = {
     '@type': 'Service',
     '@id': `${canonical}${PAGE_ID_SEPARATOR}service`,
     name: service.name[locale],
@@ -139,13 +141,16 @@ function buildServiceNode(locale: Locale, service: Service, canonical: string): 
       suggestedMinAge: Number(ages[1]),
       suggestedMaxAge: Number(ages[2]),
     },
-    offers: {
+  };
+  if (!service.hideOffer) {
+    node.offers = {
       '@type': 'Offer',
       price: service.price,
       priceCurrency: 'MDL',
       url: canonical,
-    },
-  };
+    };
+  }
+  return node;
 }
 
 /**

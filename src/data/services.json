@@ -370,5 +370,218 @@
       "ru": "1-1.5 часа",
       "ro": "1-1.5 ore"
     }
+  },
+  {
+    "id": "13",
+    "name": {
+      "ru": "Трансформеры",
+      "ro": "Transformers"
+    },
+    "slug": "transformery",
+    "description": {
+      "ru": "Они огромные! Они мощные! Они невероятные! Представьте восторг детей, когда прямо перед ними появляются настоящие Трансформеры!",
+      "ro": "Sunt uriași! Sunt puternici! Sunt incredibili! Imaginează-ți bucuria și uimirea copiilor atunci când în fața lor apar adevărații Transformers!"
+    },
+    "image": "/images/services/transformery.jpg",
+    "gallery": [
+      "/images/services/transformery-gallery-1.jpg",
+      "/images/services/transformery-gallery-2.jpg",
+      "/images/services/transformery-gallery-3.jpg",
+      "/images/services/transformery-gallery-4.jpg",
+      "/images/services/transformery-gallery-5.jpg",
+      "/images/services/transformery-gallery-6.jpg"
+    ],
+    "color": "#5E60CE",
+    "priceOnRequest": true,
+    "hideOffer": true,
+    "ageRange": {
+      "ru": "3-14 лет",
+      "ro": "3-14 ani"
+    },
+    "content": {
+      "ru": [
+        {
+          "paragraphs": [
+            "Эти гигантские роботы покоряют сердца с первой секунды! Дети их просто обожают, а эмоции от встречи — БОМБИЧЕСКИЕ! 🚀"
+          ]
+        },
+        {
+          "heading": "Что вас ждёт?",
+          "items": [
+            "🤖 Эффектное появление гигантских Трансформеров!",
+            "🔥 Невероятные эмоции и полный восторг детей!",
+            "💃 Танцы, веселье и интерактив с любимыми героями!",
+            "📸 Крутые фотографии и незабываемые впечатления!"
+          ]
+        },
+        {
+          "heading": "Выбирайте свой формат",
+          "items": [
+            "💛 Один Трансформер — уже настоящий WOW-эффект!",
+            "💥 Два Трансформера — двойная порция восторга и эмоций!"
+          ]
+        },
+        {
+          "heading": "Трансформеров можно заказать",
+          "items": [
+            "Как отдельное яркое поздравление!",
+            "Как эффектное дополнение к любой праздничной программе!"
+          ]
+        },
+        {
+          "paragraphs": [
+            "🚀 Это не просто анимация — это настоящее шоу, от которого дети будут в полном восторге!"
+          ]
+        }
+      ],
+      "ro": [
+        {
+          "paragraphs": [
+            "Acești roboți gigantici cuceresc inimile din prima secundă! Copiii îi adoră, iar emoțiile întâlnirii cu ei sunt pur și simplu EXPLOZIVE! 🚀"
+          ]
+        },
+        {
+          "heading": "Ce vă așteaptă?",
+          "items": [
+            "🤖 Apariția spectaculoasă a roboților Transformers!",
+            "🔥 Emoții incredibile și entuziasm la maximum!",
+            "💃 Dansuri, distracție și momente interactive alături de eroii preferați!",
+            "📸 Fotografii spectaculoase și amintiri de neuitat!"
+          ]
+        },
+        {
+          "heading": "Alegeți varianta preferată",
+          "items": [
+            "💛 Un Transformer – un efect WOW garantat!",
+            "💥 Doi Transformers – de două ori mai multă distracție, bucurie și emoții!"
+          ]
+        },
+        {
+          "heading": "Transformers pot fi invitați",
+          "items": [
+            "Ca un moment-surpriză separat, spectaculos și plin de energie!",
+            "Ca o completare impresionantă a oricărui program de animație!"
+          ]
+        },
+        {
+          "paragraphs": [
+            "🚀 Nu este doar animație – este un adevărat SHOW care îi va lăsa pe copii cu gura căscată!"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "14",
+    "name": {
+      "ru": "Ростовые куклы",
+      "ro": "Mascote gigant"
+    },
+    "slug": "rostovie",
+    "description": {
+      "ru": "Представьте восторг именинника, когда прямо на праздник приходит огромный любимый герой! Это не просто поздравление — это настоящий взрыв радости, улыбок и незабываемых эмоций!",
+      "ro": "Imaginează-ți bucuria și uimirea sărbătoritului atunci când la petrecere apare un personaj uriaș și îndrăgit! Nu este doar o felicitare, ci o adevărată explozie de bucurie, zâmbete și emoții de neuitat!"
+    },
+    "image": "/images/services/rostovie.jpg",
+    "gallery": [
+      "/images/services/rostovie-gallery-1.jpg",
+      "/images/services/rostovie-gallery-2.jpg",
+      "/images/services/rostovie-gallery-3.jpg",
+      "/images/services/rostovie-gallery-4.jpg",
+      "/images/services/rostovie-gallery-5.jpg",
+      "/images/services/rostovie-gallery-6.jpg"
+    ],
+    "color": "#8AC926",
+    "price": 1200,
+    "priceNote": {
+      "ru": "за поздравление",
+      "ro": "pentru o felicitare"
+    },
+    "hideOffer": true,
+    "ageRange": {
+      "ru": "3-14 лет",
+      "ro": "3-14 ani"
+    },
+    "content": {
+      "ru": [
+        {
+          "heading": "Что вас ждёт?",
+          "items": [
+            "🌟 Эффектное появление большого героя на ваш выбор!",
+            "🎂 Яркое и необычное поздравление именинника!",
+            "💃 Весёлые танцы, музыка и зажигательные движения!",
+            "🥳 Обнимашки, смех и море позитивных эмоций!",
+            "📸 Незабываемые фотографии с любимым персонажем!"
+          ]
+        },
+        {
+          "paragraphs": [
+            "🎊 Подарите имениннику не просто праздник, а настоящую сказку, в которой любимый герой приходит поздравить именно его!"
+          ]
+        }
+      ],
+      "ro": [
+        {
+          "heading": "Ce vă așteaptă?",
+          "items": [
+            "🌟 Apariția spectaculoasă a unei mascote gigant, la alegerea voastră!",
+            "🎂 O felicitare originală și plină de veselie pentru sărbătorit!",
+            "💃 Dansuri distractive, muzică și multă energie!",
+            "🥳 Îmbrățișări, râsete și o mulțime de emoții pozitive!",
+            "📸 Fotografii memorabile alături de personajul preferat!"
+          ]
+        },
+        {
+          "paragraphs": [
+            "🎊 Oferă-i sărbătoritului nu doar o petrecere, ci o adevărată poveste în care personajul preferat vine special pentru a-l felicita!",
+            "💌 Rezervă acum mascota preferată și surprinde-i pe cei dragi! 🎉"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "15",
+    "name": {
+      "ru": "Батуты",
+      "ro": "Trambulinele"
+    },
+    "slug": "batuty",
+    "description": {
+      "ru": "Батуты — это любимое развлечение детей, которое дарит радость, смех и море ярких эмоций на протяжении всего праздника. Здесь можно без устали прыгать, веселиться, соревноваться с друзьями и наслаждаться каждым мгновением.",
+      "ro": "Trambulinele sunt una dintre cele mai îndrăgite atracții pentru copii, aducând bucurie, râsete și o mulțime de emoții frumoase pe tot parcursul petrecerii. Aici, cei mici pot să sară, să se joace, să se întreacă cu prietenii și să se bucure de fiecare clipă."
+    },
+    "image": "/images/services/batuty.jpg",
+    "gallery": [
+      "/images/services/batuty-gallery-1.jpg",
+      "/images/services/batuty-gallery-2.jpg",
+      "/images/services/batuty-gallery-3.jpg",
+      "/images/services/batuty-gallery-4.jpg",
+      "/images/services/batuty-gallery-5.jpg",
+      "/images/services/batuty-gallery-6.jpg"
+    ],
+    "color": "#F15BB5",
+    "priceOnRequest": true,
+    "hideOffer": true,
+    "ageRange": {
+      "ru": "3-14 лет",
+      "ro": "3-14 ani"
+    },
+    "content": {
+      "ru": [
+        {
+          "paragraphs": [
+            "Активные игры на батутах помогают выплеснуть энергию, создают атмосферу настоящего веселья и делают праздник ещё более ярким и незабываемым. Для каждого ребёнка это источник счастливых улыбок, отличного настроения и незабываемых впечатлений!"
+          ]
+        }
+      ],
+      "ro": [
+        {
+          "paragraphs": [
+            "Jocurile active pe trambuline îi ajută pe copii să-și consume energia, creează o atmosferă plină de veselie și transformă orice eveniment într-o experiență de neuitat. Pentru fiecare copil, trambulinele înseamnă zâmbete sincere, bună dispoziție și amintiri de neprețuit!"
+          ]
+        }
+      ]
+    }
   }
 ]

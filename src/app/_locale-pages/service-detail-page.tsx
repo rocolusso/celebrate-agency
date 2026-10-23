@@ -51,6 +51,7 @@ export async function ServiceDetailContent({
   if (!seo) notFound();
 
   const relatedServices = (servicesData as Service[]).filter((s) => s.id !== service.id);
+  const showPriceOnRequest = service.priceOnRequest === true || service.price === undefined;
 
   const graph = await buildPageGraph({
     locale,
@@ -109,8 +110,11 @@ export async function ServiceDetailContent({
                   <div>
                     <p className="text-sm text-[var(--color-gray)]">{dict.detail.labels.price}</p>
                     <p className="text-2xl font-bold" style={{ color: service.color }}>
-                      {formatPrice(service.price)}
+                      {showPriceOnRequest ? dict.detail.priceOnRequest : formatPrice(service.price as number)}
                     </p>
+                    {!showPriceOnRequest && service.priceNote && (
+                      <p className="text-sm text-[var(--color-gray)]">{service.priceNote[locale]}</p>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -122,15 +126,17 @@ export async function ServiceDetailContent({
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">⏱️</span>
-                  <div>
-                    <p className="text-sm text-[var(--color-gray)]">{dict.detail.labels.duration}</p>
-                    <p className="text-lg font-medium text-[var(--color-navy)]">
-                      {service.duration[locale]}
-                    </p>
+                {service.duration && (
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">⏱️</span>
+                    <div>
+                      <p className="text-sm text-[var(--color-gray)]">{dict.detail.labels.duration}</p>
+                      <p className="text-lg font-medium text-[var(--color-navy)]">
+                        {service.duration[locale]}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <Button href="#contact" size="lg" className="w-full md:w-auto">
                 {dict.detail.orderBtn}
@@ -149,6 +155,33 @@ export async function ServiceDetailContent({
             <p className="text-lg text-[var(--color-gray)] leading-relaxed mb-8">
               {service.description[locale]}
             </p>
+            {service.content?.[locale].map((block, blockIndex) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={blockIndex} className="mb-8">
+                {block.heading && (
+                  <h3 className="text-2xl font-bold text-[var(--color-navy)] mb-4">{block.heading}</h3>
+                )}
+                {block.paragraphs?.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className="text-lg text-[var(--color-gray)] leading-relaxed mb-4">
+                    {paragraph}
+                  </p>
+                ))}
+                {block.items && (
+                  <ul className="space-y-3">
+                    {block.items.map((item) => {
+                      const [first, ...rest] = item.split(' ');
+                      const hasIcon = (first.codePointAt(0) ?? 0) > 0x2000;
+                      return (
+                        <li key={item} className="flex items-start gap-3 text-[var(--color-navy)]">
+                          <span className="text-xl flex-shrink-0">{hasIcon ? first : '•'}</span>
+                          <span className="text-lg">{hasIcon ? rest.join(' ') : item}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            ))}
             <div className="bg-[var(--color-cream)] rounded-xl p-6 md:p-8">
               <h3 className="text-2xl font-bold text-[var(--color-navy)] mb-4">
                 {dict.detail.includesTitle}

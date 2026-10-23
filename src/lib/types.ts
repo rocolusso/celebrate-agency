@@ -3,6 +3,13 @@ export interface LocalizedString {
   ro: string;
 }
 
+/** Block of the service page body: an optional H3 heading, paragraphs and a list of items. */
+export interface ServiceContentBlock {
+  heading?: string;
+  paragraphs?: string[];
+  items?: string[];
+}
+
 export interface Service {
   id: string;
   name: LocalizedString;
@@ -11,9 +18,21 @@ export interface Service {
   image: string;
   gallery?: string[];
   color: string;
-  price: number;
+  /** Price in lei shown on the page; absent for services priced on request. */
+  price?: number;
+  /** Show "price on request" instead of a number. */
+  priceOnRequest?: boolean;
+  /** Short note next to the price, e.g. "per greeting". */
+  priceNote?: LocalizedString;
+  /** Do not put an Offer (price) into the Service JSON-LD of this page. */
+  hideOffer?: boolean;
   ageRange: LocalizedString;
-  duration: LocalizedString;
+  duration?: LocalizedString;
+  /** Extra page body shown under the description. */
+  content?: {
+    ru: ServiceContentBlock[];
+    ro: ServiceContentBlock[];
+  };
 }
 
 export interface Feature {

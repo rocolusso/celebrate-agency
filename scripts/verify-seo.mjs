@@ -364,8 +364,10 @@ for (const loc of locs) {
         if (!nonEmpty(svc.name) || !nonEmpty(svc.description)) miss('missing name or description');
         if (!svc.areaServed) miss('missing areaServed');
         if (!nonEmpty(svc.image)) miss('missing image');
-        const { price, priceCurrency } = svc.offers ?? {};
-        if (!(typeof price === 'number' && price > 0) || priceCurrency !== 'MDL') miss(`offers need a numeric price and priceCurrency MDL: ${JSON.stringify(svc.offers)}`);
+        if (svc.offers) {
+          const { price, priceCurrency } = svc.offers;
+          if (!(typeof price === 'number' && price > 0) || priceCurrency !== 'MDL') miss(`offers need a numeric price and priceCurrency MDL: ${JSON.stringify(svc.offers)}`);
+        }
         const { suggestedMinAge: lo, suggestedMaxAge: hi } = svc.audience ?? {};
         if (!Number.isInteger(lo) || !Number.isInteger(hi) || lo > hi) miss(`audience needs integer suggestedMinAge <= suggestedMaxAge: ${JSON.stringify(svc.audience)}`);
       }
