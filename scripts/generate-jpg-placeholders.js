@@ -3,6 +3,12 @@ const path = require('path');
 const fs = require('fs');
 
 async function createColoredJPG(width, height, color, text, outputPath) {
+  // Never overwrite an existing file (real photos or earlier placeholders)
+  if (fs.existsSync(outputPath)) {
+    console.log(`↷ Skipped (already exists): ${path.basename(outputPath)}`);
+    return;
+  }
+
   // Convert hex color to RGB
   const hexToRgb = (hex) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -59,7 +65,10 @@ async function generateAllImages() {
     { slug: 'fiksiki', name: 'Фиксики', color: '#90E0A0' },
     { slug: 'fyeki', name: 'Фьеки', color: '#FF9B85' },
     { slug: 'holodnoe-serdce', name: 'Холодное сердце', color: '#A8DADC' },
-    { slug: 'shchenyachij-patrul', name: 'Щенячий патруль', color: '#457B9D' }
+    { slug: 'shchenyachij-patrul', name: 'Щенячий патруль', color: '#457B9D' },
+    { slug: 'transformery', name: 'Трансформеры', color: '#5E60CE' },
+    { slug: 'rostovie', name: 'Ростовые куклы', color: '#8AC926' },
+    { slug: 'batuty', name: 'Батуты', color: '#F15BB5' }
   ];
 
   for (const service of services) {

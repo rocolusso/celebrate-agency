@@ -97,7 +97,11 @@ export async function MediaDetailContent({
           <h2 className="text-3xl font-bold text-[var(--color-navy)] mb-8 text-center">
             {dict.detail.photosTitle}
           </h2>
-          <PhotoGallery images={event.images} alt={event.title[locale]} />
+          <PhotoGallery
+            images={event.images}
+            alt={event.title[locale]}
+            photoLabel={dict.detail.photoLabel}
+          />
         </Container>
       </section>
 

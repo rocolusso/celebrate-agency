@@ -12,7 +12,7 @@ All placeholder images have been generated as **proper JPG files** with correct 
 - **Format:** JPEG
 - **Usage:** Homepage hero background
 
-### Service Images (12 total)
+### Service Images
 - **Location:** `public/images/services/`
 - **Dimensions:** 800x600 pixels (4:3 aspect ratio)
 - **Format:** JPEG
@@ -29,6 +29,12 @@ All placeholder images have been generated as **proper JPG files** with correct 
   10. `fyeki.jpg` - Coral (#FF9B85)
   11. `holodnoe-serdce.jpg` - Ice Blue (#A8DADC)
   12. `shchenyachij-patrul.jpg` - Royal Blue (#457B9D)
+  13. `transformery.jpg` - Indigo (#5E60CE)
+  14. `rostovie.jpg` - Lime (#8AC926)
+  15. `batuty.jpg` - Pink (#F15BB5)
+
+Every service also has six gallery images: `<slug>-gallery-1.jpg` ... `<slug>-gallery-6.jpg`.
+The placeholders of the last three services are labelled with their file names (for example `transformery-gallery-3`).
 
 ### Event Images (21 total)
 - **Location:** `public/images/events/`
@@ -62,6 +68,8 @@ All placeholder images have been generated as **proper JPG files** with correct 
 
 ### Option 2: Using the Generator Script
 If you need to regenerate placeholders:
+
+The script skips every file that already exists, so real photos and earlier placeholders are never overwritten. To regenerate a placeholder, remove that file first.
 
 \`\`\`bash
 node scripts/generate-jpg-placeholders.js

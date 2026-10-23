@@ -26,6 +26,11 @@ export default function ServicesGrid({
     3: 'md:grid-cols-2 lg:grid-cols-3',
     4: 'md:grid-cols-2 lg:grid-cols-4',
   };
+  const cardSizes = {
+    2: '(min-width: 768px) 50vw, 100vw',
+    3: '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
+    4: '(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw',
+  };
 
   return (
     <section className="section-padding bg-[var(--color-cream)]">
@@ -42,6 +47,7 @@ export default function ServicesGrid({
               service={service}
               locale={locale}
               btnText={btnText}
+              sizes={cardSizes[columns]}
             />
           ))}
         </div>

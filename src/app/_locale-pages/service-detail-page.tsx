@@ -95,6 +95,7 @@ export async function ServiceDetailContent({
                 src={service.image}
                 alt={service.name[locale]}
                 fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
                 priority
               />
@@ -205,7 +206,11 @@ export async function ServiceDetailContent({
             <h2 className="text-3xl font-bold text-[var(--color-navy)] mb-8 text-center">
               {dict.detail.galleryTitle}
             </h2>
-            <PhotoGallery images={service.gallery} alt={service.name[locale]} />
+            <PhotoGallery
+              images={service.gallery}
+              alt={service.name[locale]}
+              photoLabel={dict.detail.photoLabel}
+            />
           </Container>
         </section>
       )}
@@ -223,6 +228,7 @@ export async function ServiceDetailContent({
                   service={related}
                   locale={locale}
                   btnText={commonDict.cards.more}
+                  sizes="(min-width: 768px) 33vw, 100vw"
                 />
               ))}
             </div>

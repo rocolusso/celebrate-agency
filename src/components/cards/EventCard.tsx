@@ -24,6 +24,7 @@ export default function EventCard({ event, locale, btnText }: EventCardProps) {
           src={event.featuredImage}
           alt={event.title[locale]}
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>

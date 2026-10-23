@@ -11,9 +11,11 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 interface PhotoGalleryProps {
   images: string[];
   alt: string;
+  /** Word used in the alt text of every thumbnail ("фото" / "foto"), from the dictionary. */
+  photoLabel: string;
 }
 
-export default function PhotoGallery({ images, alt }: PhotoGalleryProps) {
+export default function PhotoGallery({ images, alt, photoLabel }: PhotoGalleryProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -37,8 +39,9 @@ export default function PhotoGallery({ images, alt }: PhotoGalleryProps) {
           >
             <Image
               src={image}
-              alt={`${alt} - фото ${idx + 1}`}
+              alt={`${alt} - ${photoLabel} ${idx + 1}`}
               fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
               className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
           </div>

@@ -6,13 +6,18 @@ import type { Service } from '@/lib/types';
 import type { Locale } from '@/lib/i18n';
 import { getLocaleHref } from '@/lib/i18n-utils';
 
+/** Default for the 1 / 2 / 3 column grids (md:2, lg:3). */
+const DEFAULT_SIZES = '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw';
+
 interface ServiceCardProps {
   service: Service;
   locale: Locale;
   btnText: string;
+  /** `sizes` of the image; override when the card sits in a different grid. */
+  sizes?: string;
 }
 
-export default function ServiceCard({ service, locale, btnText }: ServiceCardProps) {
+export default function ServiceCard({ service, locale, btnText, sizes = DEFAULT_SIZES }: ServiceCardProps) {
   return (
     <Link
       href={getLocaleHref(locale, `/services/${service.slug}`)}
@@ -27,6 +32,7 @@ export default function ServiceCard({ service, locale, btnText }: ServiceCardPro
           src={service.image}
           alt={service.name[locale]}
           fill
+          sizes={sizes}
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
