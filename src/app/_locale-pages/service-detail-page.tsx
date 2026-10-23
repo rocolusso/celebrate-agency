@@ -245,8 +245,6 @@ export async function ServiceDetailContent({
       />
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

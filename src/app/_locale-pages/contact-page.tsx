@@ -21,7 +21,6 @@ export async function generateContactMetadata(locale: Locale): Promise<Metadata>
 
 export async function ContactPageContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'contact');
-  const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'contact');
   const { workingHours } = dict.page;
 
@@ -125,8 +124,6 @@ export async function ContactPageContent({ locale }: { locale: Locale }) {
       </section>
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

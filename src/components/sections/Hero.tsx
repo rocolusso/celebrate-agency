@@ -41,9 +41,13 @@ export default function Hero({
 
       {/* Content */}
       <Container className="relative z-10 text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg leading-tight text-balance">
+        {/* Not a heading: the page h1 lives in the SEO block. Display font inline (the global `p` rule beats utilities). */}
+        <p
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg leading-tight text-balance"
+          style={{ fontFamily: 'var(--font-hero), Arial, Helvetica, sans-serif' }}
+        >
           {title}
-        </h1>
+        </p>
         <p className="text-xl md:text-2xl text-white mb-8 drop-shadow-md">
           {subtitle}
         </p>

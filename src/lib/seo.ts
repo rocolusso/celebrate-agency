@@ -1,6 +1,6 @@
 import type { Locale } from './i18n';
 
-export type SeoSectionLevel = 2 | 3;
+export type SeoSectionLevel = 1 | 2 | 3;
 
 export interface SeoSection {
   heading: string;

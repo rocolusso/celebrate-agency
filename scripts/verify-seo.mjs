@@ -30,6 +30,13 @@
  *       breadcrumb positions run 1..n, start at the locale home, end at the page, URLs are in the sitemap
  *   A16 every image referenced from the JSON-LD (logo, image, primaryImageOfPage, Service.image) exists
  *   A14 title shape: home pages start with "<site name>: ", every other page ends with " | <site name>"
+ *   A17 exactly one <h1> per page (scripts excluded)
+ *   A18 the home h1 is the expected keyword heading of its language
+ *   A21 the SEO block is always expanded: no toggle button, no max-height clamp, no "read more" text
+ *   A22 Russian pages contain no Romanian keyword phrases, except the quoted search queries
+ *       ("Animatori Balti", optionally followed by "Sărbători pentru copii Bălți" in the services list)
+ *       and the postal address ("MD-3100 Bălți")
+ *   (A19 and A20 are reserved for the animated hero banner checks.)
  * Exit code 1 if any check fails.
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -43,6 +50,7 @@ const argValue = (name) => {
 const liveOrigin = argValue('--live')?.replace(/\/+$/, '');
 const buildDir = argValue('--build') ?? '.';
 const OG_LOCALE = { ro: 'ro_RO', ru: 'ru_RU' };
+const HOME_H1 = { ro: 'Animatori profesioniști din Bălți', ru: 'Профессиональные аниматоры в Бельцах' };
 const EXPECTED_HREFLANG = ['ro', 'ru', 'x-default'];
 const OG_REQUIRED = ['og:title', 'og:description', 'og:type', 'og:url', 'og:image', 'og:site_name', 'og:locale'];
 const OG_SINGLE = [...OG_REQUIRED, 'og:image:width', 'og:image:height', 'og:image:type', 'og:image:alt', 'twitter:card', 'twitter:image'];
@@ -410,6 +418,28 @@ for (const loc of locs) {
     else if (isHome && !p.title.startsWith(`${siteName}: `)) fail('A14', loc, `home title must start with "${siteName}: ": ${p.title}`);
     else if (!isHome && !p.title.endsWith(` | ${siteName}`)) fail('A14', loc, `title must end with " | ${siteName}": ${p.title}`);
 
+    // A17 / A18: single h1, and the expected h1 on the home pages
+    const bodyHtml = html.replace(/<script\b[\s\S]*?<\/script>/gi, '');
+    const h1s = [...bodyHtml.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => m[1].replace(/<[^>]+>/g, '').trim());
+    if (h1s.length !== 1) fail('A17', loc, `expected exactly one <h1>, found ${h1s.length}`);
+    else if (isHome && h1s[0] !== HOME_H1[p.lang]) fail('A18', loc, `home h1 is "${h1s[0]}", expected "${HOME_H1[p.lang]}"`);
+
+    // A21: the SEO block is always expanded
+    const seoBlock = (bodyHtml.match(/<section\b[^>]*aria-label="SEO"[^>]*>([\s\S]*?)<\/section>/i) || [])[1];
+    if (seoBlock === undefined) fail('A21', loc, 'SEO block not found');
+    else if (/<button\b|aria-expanded|\bmax-h-|Читать далее|Citește mai mult/i.test(seoBlock)) fail('A21', loc, 'SEO block is collapsible or has a toggle');
+
+    // A22: no Romanian keyword phrases in Russian pages (quoted search queries are allowed)
+    if (p.lang === 'ru') {
+      const ruText = bodyHtml
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/Animatori Balti или Sărbători pentru copii Bălți/g, '')
+        .replace(/Animatori Balti/g, '')
+        .replace(/MD-\d{4} Bălți/g, ''); // the postal address in the footer
+      const left = ruText.match(/Sărbători|pentru copii|Bălți|Balti|Animatori/g);
+      if (left) fail('A22', loc, `Romanian keyword phrase in a Russian page: ${[...new Set(left)].join(', ')}`);
+    }
+
     // A5: /index links
     p.indexLinks.forEach((href) => fail('A5', loc, `link to an /index path: ${href}`));
 
@@ -435,7 +465,7 @@ else {
 const checked = locs.length;
 console.log(`verify-seo (${liveOrigin ? `live ${liveOrigin}` : `build ${buildDir}`}): ${checked} sitemap URLs checked`);
 if (failures.length === 0) {
-  console.log('OK: all checks passed (A1-A16)');
+  console.log('OK: all checks passed (A1-A18, A21, A22)');
 } else {
   const byId = failures.reduce((acc, f) => ({ ...acc, [f.id]: (acc[f.id] ?? 0) + 1 }), {});
   console.log(`FAILED: ${failures.length} problem(s) -> ${Object.entries(byId).map(([k, v]) => `${k}: ${v}`).join(', ')}`);

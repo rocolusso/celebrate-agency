@@ -56,8 +56,6 @@ export async function ServicesListContent({ locale }: { locale: Locale }) {
       />
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

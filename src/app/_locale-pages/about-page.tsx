@@ -22,7 +22,6 @@ export async function generateAboutMetadata(locale: Locale): Promise<Metadata> {
 
 export async function AboutPageContent({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale, 'about');
-  const commonDict = await getDictionary(locale, 'common');
   const seo = await getPageSeo(locale, 'about');
 
   const programTitle = dict.program.title
@@ -123,8 +122,6 @@ export async function AboutPageContent({ locale }: { locale: Locale }) {
       </section>
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

@@ -157,8 +157,6 @@ export async function MediaDetailContent({
       </section>
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

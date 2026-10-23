@@ -64,8 +64,6 @@ export async function HomePageContent({ locale }: { locale: Locale }) {
       />
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );

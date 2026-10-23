@@ -68,8 +68,6 @@ export async function MediaListContent({ locale }: { locale: Locale }) {
       </section>
       <SeoBlock
         sections={seo.sections}
-        readMore={commonDict.seo.readMore}
-        readLess={commonDict.seo.readLess}
       />
     </main>
   );
