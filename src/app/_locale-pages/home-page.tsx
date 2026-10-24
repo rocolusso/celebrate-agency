@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Hero from '@/components/sections/Hero';
+import HeroBanner from '@/components/hero-banner/HeroBanner';
 import About from '@/components/sections/About';
 import ServicesGrid from '@/components/sections/ServicesGrid';
 import Features from '@/components/sections/Features';
@@ -39,12 +39,13 @@ export async function HomePageContent({ locale }: { locale: Locale }) {
   return (
     <main>
       <JsonLd graph={graph} />
-      <Hero
+      <HeroBanner
+        kicker={homeDict.hero.kicker}
+        note={homeDict.hero.note}
         title={homeDict.hero.title}
         subtitle={homeDict.hero.subtitle}
         ctaText={homeDict.hero.ctaText}
         ctaHref="#contact"
-        backgroundImage="/images/hero/hero-bg.jpg"
       />
       <PromoHtmlBanner locale={locale} />
       <About dict={homeDict.about} />

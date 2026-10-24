@@ -36,7 +36,9 @@
  *   A22 Russian pages contain no Romanian keyword phrases, except the quoted search queries
  *       ("Animatori Balti", optionally followed by "Sărbători pentru copii Bălți" in the services list)
  *       and the postal address ("MD-3100 Bălți")
- *   (A19 and A20 are reserved for the animated hero banner checks.)
+ *   A19 the home hero banner exists and has no heading tags (h1-h6, role="heading")
+ *   A20 the server HTML of the banner holds its two strings (hero.kicker, hero.note) and does not hold
+ *       the client-only hero texts (title, subtitle, button); needs the build dir, skipped for --live
  * Exit code 1 if any check fails.
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -424,6 +426,22 @@ for (const loc of locs) {
     if (h1s.length !== 1) fail('A17', loc, `expected exactly one <h1>, found ${h1s.length}`);
     else if (isHome && h1s[0] !== HOME_H1[p.lang]) fail('A18', loc, `home h1 is "${h1s[0]}", expected "${HOME_H1[p.lang]}"`);
 
+    // A19 / A20: the hero banner (home pages only)
+    if (isHome) {
+      const banner = (bodyHtml.match(/<section\b[^>]*data-hero-banner[^>]*>([\s\S]*?)<\/section>/i) || [])[1];
+      if (banner === undefined) fail('A19', loc, 'hero banner (data-hero-banner) not found');
+      else {
+        if (/<h[1-6]\b|role="heading"/i.test(banner)) fail('A19', loc, 'the hero banner contains a heading tag');
+        const dictFile = join(buildDir, 'src/messages', p.lang ?? '', 'home.json');
+        if (!liveOrigin && existsSync(dictFile)) {
+          const { hero } = JSON.parse(readFileSync(dictFile, 'utf8'));
+          const bannerText = banner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+          for (const key of ['kicker', 'note']) if (!bannerText.includes(hero[key])) fail('A20', loc, `banner HTML lacks hero.${key}`);
+          for (const key of ['title', 'subtitle', 'ctaText']) if (bannerText.includes(hero[key])) fail('A20', loc, `banner HTML contains the client-only hero.${key}`);
+        }
+      }
+    }
+
     // A21: the SEO block is always expanded
     const seoBlock = (bodyHtml.match(/<section\b[^>]*aria-label="SEO"[^>]*>([\s\S]*?)<\/section>/i) || [])[1];
     if (seoBlock === undefined) fail('A21', loc, 'SEO block not found');
@@ -465,7 +483,7 @@ else {
 const checked = locs.length;
 console.log(`verify-seo (${liveOrigin ? `live ${liveOrigin}` : `build ${buildDir}`}): ${checked} sitemap URLs checked`);
 if (failures.length === 0) {
-  console.log('OK: all checks passed (A1-A18, A21, A22)');
+  console.log('OK: all checks passed (A1-A22)');
 } else {
   const byId = failures.reduce((acc, f) => ({ ...acc, [f.id]: (acc[f.id] ?? 0) + 1 }), {});
   console.log(`FAILED: ${failures.length} problem(s) -> ${Object.entries(byId).map(([k, v]) => `${k}: ${v}`).join(', ')}`);

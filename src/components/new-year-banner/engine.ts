@@ -3,7 +3,7 @@
  * back-слой (с шлейфами): фейерверки, падающие звёзды.
  * front-слой: снег, конфетти, блёстки.
  */
-export type ThemeName = "brand" | "winter";
+export type ThemeName = "brand" | "winter" | "party";
 
 const TAU = Math.PI * 2;
 const rnd = (a: number, b: number) => a + Math.random() * (b - a);
@@ -13,6 +13,12 @@ const PALETTE = {
   brand: {
     fireworks: ["#ffd23f", "#ff4fa3", "#4de1ff", "#ffffff", "#9dff4d", "#ff9a3c"],
     confetti: ["#ffd23f", "#ff4fa3", "#4de1ff", "#9dff4d", "#ff6b4a", "#ffffff", "#b388ff"],
+    glitter: "255,226,120",
+  },
+  // Kids party hero: site accent colors (hot pink, yellow, electric blue, orange, purple)
+  party: {
+    fireworks: ["#ffd60a", "#ff1493", "#00b4d8", "#ffffff", "#9dff4d", "#ff6b35"],
+    confetti: ["#ffd60a", "#ff1493", "#00b4d8", "#9d4edd", "#ff6b35", "#ffffff", "#d4f1e8"],
     glitter: "255,226,120",
   },
   winter: {
@@ -116,6 +122,22 @@ function makeGlintSprite(rgb: string): HTMLCanvasElement {
   return c;
 }
 
+export interface EngineOptions {
+  reduced: boolean;
+  /** false removes the falling dots (snow). Default: true, as before. */
+  snow?: boolean;
+  /** Upper bound of the device pixel ratio. Default: 2 below 600 px, 1.75 above. */
+  maxDpr?: number;
+  /** Upper bound of the confetti count. Default: unlimited. */
+  maxConfetti?: number;
+  /** Horizontal range (0..1 of the width) where rockets are launched. Default: right part on wide screens. */
+  rocketZone?: readonly [number, number];
+  /** Scale of the firework bursts (speed of the sparks). Default: 1. */
+  burstScale?: number;
+  /** Position in the animation loop (0..1). When set, the rocket rate follows the loop scenes. */
+  phase?: () => number;
+}
+
 export interface Engine {
   start(): void;
   stop(): void;
@@ -128,7 +150,7 @@ export function createEngine(
   back: HTMLCanvasElement,
   front: HTMLCanvasElement,
   theme: ThemeName,
-  opts: { reduced: boolean },
+  opts: EngineOptions,
 ): Engine {
   const bctx = back.getContext("2d")!;
   const fctx = front.getContext("2d")!;
@@ -155,7 +177,7 @@ export function createEngine(
 
   function seed() {
     const area = w * h;
-    const snowCount = Math.round(area / (theme === "winter" ? 5200 : 24000));
+    const snowCount = opts.snow === false ? 0 : Math.round(area / (theme === "winter" ? 5200 : 24000));
     flakes = Array.from({ length: snowCount }, () => {
       const depth = Math.random();
       const r = 0.8 + depth * depth * 3.4;
@@ -171,8 +193,8 @@ export function createEngine(
       };
     });
     confetti =
-      theme === "brand"
-        ? Array.from({ length: Math.round(area / 7200) }, () => newConfetto(true))
+      theme !== "winter"
+        ? Array.from({ length: Math.min(opts.maxConfetti ?? Infinity, Math.round(area / 7200)) }, () => newConfetto(true))
         : [];
     glints = Array.from({ length: Math.round(area / (theme === "winter" ? 9000 : 11000)) }, () => ({
       x: rnd(0, w),
@@ -209,7 +231,7 @@ export function createEngine(
     if (r.width < 2 || r.height < 2) return;
     w = r.width;
     h = r.height;
-    dpr = Math.min(window.devicePixelRatio || 1, w < 600 ? 2 : 1.75);
+    dpr = Math.min(window.devicePixelRatio || 1, opts.maxDpr ?? (w < 600 ? 2 : 1.75));
     for (const c of [back, front]) {
       c.width = Math.round(w * dpr);
       c.height = Math.round(h * dpr);
@@ -220,9 +242,19 @@ export function createEngine(
     if (!raf) drawFrame(); // перерисовать статичный кадр
   }
 
+  /** Pause before the next rocket: the default is random; with `phase` the fireworks scene is the busiest. */
+  function rocketGap(): number {
+    if (!opts.phase) return rnd(0.9, 2.0);
+    const p = opts.phase();
+    if (p >= 0.38 && p < 0.7) return rnd(0.3, 0.65);
+    if (p >= 0.7 && p < 0.94) return rnd(1.6, 2.6);
+    return rnd(2.4, 3.6);
+  }
+
   function launchRocket() {
     const wide = w >= 900;
-    const x = wide ? rnd(w * 0.42, w * 0.95) : rnd(w * 0.1, w * 0.9);
+    const zone = opts.rocketZone ?? (wide ? [0.42, 0.95] : [0.1, 0.9]);
+    const x = rnd(w * zone[0], w * zone[1]);
     const targetY = rnd(h * 0.1, h * (wide ? 0.42 : 0.5));
     const y0 = h * 0.86;
     const dur = rnd(0.7, 1.05);
@@ -240,7 +272,7 @@ export function createEngine(
   function burst(x: number, y: number, color: string) {
     const kind = Math.random();
     const n = Math.round(rnd(44, 72) * (w < 600 ? 0.7 : 1));
-    const speed = rnd(90, 190) * (w < 600 ? 0.75 : 1);
+    const speed = rnd(90, 190) * (w < 600 ? 0.75 : 1) * (opts.burstScale ?? 1);
     const second = pick(pal.fireworks);
     for (let i = 0; i < n; i++) {
       const a = (i / n) * TAU + rnd(-0.03, 0.03);
@@ -287,7 +319,7 @@ export function createEngine(
     nextRocket -= dt;
     if (nextRocket <= 0) {
       launchRocket();
-      nextRocket = rnd(0.9, 2.0);
+      nextRocket = rocketGap();
     }
 
     for (let i = rockets.length - 1; i >= 0; i--) {
