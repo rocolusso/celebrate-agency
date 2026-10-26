@@ -25,6 +25,13 @@ export default async function LocaleLayoutContent({
       <body className={fontVariableClasses}>
         <Analytics />
         <Script src="https://analytics.ahrefs.com/analytics.js" data-key="H4CpaqPIT7ENOeCOtKKbCA" strategy="afterInteractive" />
+        <Script
+          src="https://app.cromojo.com/script.min.js"
+          data-site-id="s3p8z55c530gq07iqltj5kt5"
+          data-consent-mode="server_side"
+          data-ingest-key="55AGm4xj1PTZ7VuOBqe2pb9Ectq056XcfP16HHoF"
+          strategy="afterInteractive"
+        />
         {/* <SpeedInsights /> */}
         <Navbar locale={locale} dict={dict} />
         {children}
