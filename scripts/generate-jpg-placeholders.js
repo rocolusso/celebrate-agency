@@ -37,6 +37,26 @@ async function createColoredJPG(width, height, color, text, outputPath) {
   console.log(`✓ Created: ${path.basename(outputPath)}`);
 }
 
+// Featured image (1200x675, 16:9) and `count` gallery images (800x600, 4:3) of one event.
+// File names: <prefix>-featured.jpg and <prefix>-<n>.jpg
+async function createEventImages(publicDir, prefix, label, count, color) {
+  await createColoredJPG(
+    1200, 675,
+    color,
+    `${label} Featured`,
+    path.join(publicDir, 'events', `${prefix}-featured.jpg`)
+  );
+
+  for (let j = 1; j <= count; j++) {
+    await createColoredJPG(
+      800, 600,
+      color,
+      `${label} - Photo ${j}`,
+      path.join(publicDir, 'events', `${prefix}-${j}.jpg`)
+    );
+  }
+}
+
 async function generateAllImages() {
   const publicDir = path.join(__dirname, '..', 'public', 'images');
 
@@ -83,24 +103,12 @@ async function generateAllImages() {
   // Event images
   console.log('\n📅 Event images:');
   for (let i = 1; i <= 3; i++) {
-    // Featured image (1200x675 - 16:9 aspect ratio)
-    await createColoredJPG(
-      1200, 675,
-      '#D4F1E8',
-      `Event ${i} Featured`,
-      path.join(publicDir, 'events', `event-${i}-featured.jpg`)
-    );
-    
-    // Gallery images (800x600 - 4:3 aspect ratio)
-    for (let j = 1; j <= 6; j++) {
-      await createColoredJPG(
-        800, 600,
-        '#D4F1E8',
-        `Event ${i} - Photo ${j}`,
-        path.join(publicDir, 'events', `event-${i}-${j}.jpg`)
-      );
-    }
+    await createEventImages(publicDir, `event-${i}`, `Event ${i}`, 6, '#D4F1E8');
   }
+
+  // "Новогодняя сказка 2027" (slug new-year-2027): 1 featured + 70 gallery photos
+  console.log('\n🎄 Event images (new-year-2027):');
+  await createEventImages(publicDir, 'event-ny2027', 'NY 2027', 70, '#CFE8FF');
 
   // Generic placeholder
   console.log('\n🖼️  Generic placeholder:');

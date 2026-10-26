@@ -54,6 +54,10 @@ The placeholders of the last three services are labelled with their file names (
 - `event-3-featured.jpg` (1200x675)
 - `event-3-1.jpg` through `event-3-5.jpg` (800x600)
 
+**Event 4 ("Новогодняя сказка 2027", slug `new-year-2027`):**
+- `event-ny2027-featured.jpg` (1200x675)
+- `event-ny2027-1.jpg` through `event-ny2027-70.jpg` (800x600)
+
 ### Generic Placeholder
 - **File:** `public/images/placeholder.jpg`
 - **Dimensions:** 800x600 pixels

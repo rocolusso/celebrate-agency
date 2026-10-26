@@ -1,11 +1,9 @@
 import type { Locale } from "./copy";
 
-/**
- * Сейчас это заглушки.
- */
+/** Страница события «Новогодняя сказка 2027» в разделе медиа. */
 export const BANNER_LINKS: Record<Locale, string> = {
-  ro: "/new-year-2027",
-  ru: "/ru/new-year-2027",
+  ro: "/media/new-year-2027",
+  ru: "/ru/media/new-year-2027",
 };
 
 /** Период показа баннера. Используется хелпером isNewYearSeason() */

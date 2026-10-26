@@ -91,5 +91,35 @@
         ]
       }
     ]
+  },
+  "new-year-2027": {
+    "meta": {
+      "title": "Povestea de Anul Nou 2027 în Bălți",
+      "description": "Povestea de Anul Nou 2027 de la Domovenok în Bălți: Moș Crăciun, Crăciunița și elfii vin acasă, la grădiniță și școală. Rezervări deschise."
+    },
+    "sections": [
+      {
+        "heading": "Moș Crăciun și Crăciunița în Bălți de Anul Nou 2027",
+        "level": 2,
+        "paragraphs": [
+          "Domovenok primește cereri pentru programele de Anul Nou 2027. La copii vin Moș Crăciun, Crăciunița și elfii veseli.",
+          "Moș Crăciun îndeplinește dorințe, Crăciunița ajută la sărbătoare, iar elfii se joacă și dansează cu copiii."
+        ]
+      },
+      {
+        "heading": "Ce include programul de Anul Nou pentru copii",
+        "level": 2,
+        "paragraphs": [
+          "Anul Nou pentru copii în Bălți înseamnă jocuri și concursuri, dansuri și hore în jurul bradului, felicitări cu oferirea cadourilor și fotografii cu personajele."
+        ]
+      },
+      {
+        "heading": "Comandați animatori pentru Anul Nou în Bălți",
+        "level": 2,
+        "paragraphs": [
+          "Personajele vin acasă, la grădiniță, la școală sau la orice eveniment festiv. Rezervările sunt deschise: lăsați o cerere Domovenok și discutăm data și locul."
+        ]
+      }
+    ]
   }
 }
