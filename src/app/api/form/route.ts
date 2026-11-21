@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 import { getContactFormSchema } from '@/lib/validations';
 
@@ -64,20 +63,26 @@ ${userMessage ? `💬 Сообщение: ${userMessage}` : ''}
 
     // Send to all configured Telegram users
     try {
-      const promises = userIds.map((userId) =>
-        axios.post(telegramApiUrl, {
-          chat_id: userId,
-          text: formattedMessage,
-          parse_mode: 'HTML',
-        })
-      );
+      const promises = userIds.map(async (userId) => {
+        const response = await fetch(telegramApiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: userId,
+            text: formattedMessage,
+            parse_mode: 'HTML',
+          }),
+        });
+
+        if (!response.ok) {
+          const details = await response.text().catch(() => '');
+          throw new Error(`Telegram API responded ${response.status}: ${details}`);
+        }
+      });
 
       await Promise.all(promises);
     } catch (error: any) {
-      console.error(
-        'Error sending Telegram messages:',
-        error.response?.data || error.message
-      );
+      console.error('Error sending Telegram messages:', error.message);
       return NextResponse.json(
         { error: 'Failed to send notification' },
         { status: 500 }
